@@ -1,7 +1,7 @@
 <div class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-dark bg-white min-vh-100 border-end sidebar-main"
     style="width: 280px;">
 
-    <a href="/" class="d-flex align-items-center mb-3 text-dark text-decoration-none">
+    <a href="{{ route('dashboard') }}" class="d-flex align-items-center text-dark text-decoration-none">
         <img src="{{ asset('site/assets/logo.png') }}" width="200" height="auto" class="ms-2">
     </a>
     <p class="fs-5 fw-bold ms-2">Yönetim Paneli</p>
@@ -18,17 +18,17 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link">
+            <a href="{{ route('content') }}" class="nav-link">
                 <i class="bi bi-file-earmark-text fs-4 fw-bold me-2"></i> İçerik Yönetimi
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link">
+            <a href="{{ route('seo') }}" class="nav-link">
                 <i class="bi bi-search fs-4 fw-bold me-2"></i> SEO Ayarları
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link">
+            <a href="{{ route('user') }}" class="nav-link">
                 <i class="bi bi-person fs-4 fw-bold me-2"></i> Profil
             </a>
         </li>
@@ -61,22 +61,22 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Ürün Yönetimi">
+            <a href="{{ route('products') }}" class="nav-link py-3 border-bottom rounded-0" title="Ürün Yönetimi">
                 <i class="bi bi-cart fs-4"></i>
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="İçerik Yönetimi">
+            <a href="{{ route('content') }}" class="nav-link py-3 border-bottom rounded-0" title="İçerik Yönetimi">
                 <i class="bi bi-file-earmark-text fs-4"></i>
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="SEO Ayarları">
+            <a href="{{ route('seo') }}" class="nav-link py-3 border-bottom rounded-0" title="SEO Ayarları">
                 <i class="bi bi-search fs-4"></i>
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Profil">
+            <a href="{{ route('user') }}" class="nav-link py-3 border-bottom rounded-0" title="Profil">
                 <i class="bi bi-person fs-4"></i>
             </a>
         </li>

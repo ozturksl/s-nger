@@ -21,7 +21,9 @@
                         <p>Ürün yönetiminin sağlandığı sayfa</p>
                     </div>
                     <div class="ms-auto mt-4">
-                        <a  href="{{ route('newproducts') }}" class="px-4 py-2 text-white bg-danger rounded-2 text-decoration-none fw-bold">YENİ ÜRÜN EKLE</a>
+                        <a href="{{ route('newproducts') }}"
+                            class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold">YENİ ÜRÜN
+                            EKLE</a>
                     </div>
 
                 </div>

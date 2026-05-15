@@ -78,9 +78,7 @@
                                             <td>Ürün A</td>
                                             <td><span class="badge bg-warning">Beklemede</span></td>
                                             <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                                <a href="#"><i class="bi bi-trash text-danger ms-3"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -91,9 +89,7 @@
                                             <td>Ürün B</td>
                                             <td><span class="badge bg-success">Onaylandı</span></td>
                                             <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                                <a href="#"><i class="bi bi-trash text-danger ms-3"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

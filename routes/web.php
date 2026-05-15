@@ -43,3 +43,21 @@ Route::get('/lpanel/product', function(){
 Route::get('/lpanel/product/new', function(){
     return view('lpanel.front.addprod');
 })->name('newproducts');
+
+Route::get('/lpanel/content/', function(){
+    return view('lpanel.front.content');
+})->name('content');
+
+Route::get('/lpanel/seo/', function(){
+    return view('lpanel.front.seosetting');
+})->name('seo');
+
+Route::get('/lpanel/user/', function(){
+    return view('lpanel.front.usersetting');
+})->name('user');
+
+Route::get('/lpanel/error', function(){
+    return view('lpanel.front.error');
+})->name('error');
+
+

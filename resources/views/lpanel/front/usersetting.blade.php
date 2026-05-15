@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Ürün Ekle
+    Kullanıcı Ayarları
 @endsection
 
 @section('css')
@@ -17,14 +17,14 @@
 
             <div class="flex-grow-1 p-4">
                 <div class="mb-4">
-                    <h1 class="fs-2 fw-bold mb-1">Ürün Ekle</h1>
-                    <p class="text-muted">Yeni ürün eklemek için aşağıdaki formu doldurun.</p>
+                    <h1 class="fs-2 fw-bold mb-1">Kullanıcı Ayarları</h1>
+                    <p class="text-muted">Kullanıcı Ayarlarının yapıldığı bölüm</p>
                 </div>
                 <div class="custom-border rounded-4 bg-white shadow-sm">
                     <div class="custom-border-bottom">
                         <h2 class="fs-4 px-4 py-3 m-0">
-                            <i class="bi bi-cart fs-4 me-2 text-danger"></i>
-                            Ürün Bilgileri
+                            <i class="bi bi-person fs-4 me-2 text-danger"></i>
+                            Kullanıcı Bilgileri
                         </h2>
                     </div>
 
@@ -33,43 +33,31 @@
 
                         <div class="p-4">
                             <div class="mb-4">
-                                <label for="urun_adi" class="form-label fw-bold">
-                                    ÜRÜN ADI
+                                <label for="" class="form-label fw-bold">
+                                    KULLANICI ADI
                                 </label>
-                                <input type="text" id="urun_adi" name="urun_adi" class="form-control custom-border"
-                                    placeholder="Ürün adını giriniz" value="">
+                                <input type="text" class="form-control custom-border"
+                                    placeholder="Kullanıcı adı giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="urun_aciklama" class="form-label fw-bold">
-                                    ÜRÜN AÇIKLAMASI
+                                <label for="" class="form-label fw-bold">
+                                    ŞİFRE
                                 </label>
-                                <textarea id="urun_aciklama" name="urun_aciklama" class="form-control custom-border"
-                                    placeholder="Ürün açıklamasını giriniz" rows="4"></textarea>
+                                <input type="password" class="form-control custom-border" placeholder="Şifre giriniz."
+                                    value="">
                             </div>
                             <div class="mb-4">
-                                <label for="urun_fiyat" class="form-label fw-bold">
-                                    ÜRÜN FİYATI
+                                <label for="" class="form-label fw-bold">
+                                    ŞİFRE TEKRAR
                                 </label>
-                                <div class="input-group">
-                                    <input type="number" id="urun_fiyat" name="urun_fiyat"
-                                        class="form-control custom-border" placeholder="0.00" value="" step="0.01"
-                                        min="0">
-                                    <span class="input-group-text">₺</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="urun_ozellikler" class="form-label fw-bold">
-                                    ÜRÜN ÖZELLİKLERİ
-                                </label>
-                                <textarea id="urun_ozellikler" name="urun_ozellikler" class="form-control custom-border"
-                                    placeholder="Ürün özelliklerini giriniz (her özellik yeni satırda)" rows="5"></textarea>
+                                <input type="password" class="form-control custom-border" placeholder="Şifre giriniz."
+                                    value="">
                             </div>
                             <div class="mb-4">
                                 <label for="urun_foto" class="form-label fw-bold">
-                                    ÜRÜN FOTOĞRAFI
+                                    KULLANICI FOTOĞRAFI
                                 </label>
-                                <input class="form-control" type="file" id="urun_foto" name="urun_foto"
+                                <input class="form-control" type="file"
                                     accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted">
                                     <i class="bi bi-info-circle me-1"></i>
@@ -79,7 +67,7 @@
                             <div class="d-flex gap-3 pt-2">
                                 <button type="submit" class="btn btn-success px-4 py-2">
                                     <i class="bi bi-check-circle me-2"></i>
-                                    Ürünü Kaydet
+                                    Kaydet
                                 </button>
                                 <a href="#" class="btn btn-outline-danger px-4 py-2">
                                     <i class="bi bi-x-circle me-2"></i>
