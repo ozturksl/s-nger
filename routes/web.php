@@ -36,6 +36,10 @@ Route::get('/lpanel/dashboard', function(){
     return view('lpanel.front.index');
 })->name('dashboard');
 
-Route::get('/lpanel/ürünler', function(){
+Route::get('/lpanel/product', function(){
     return view('lpanel.front.products');
 })->name('products');
+
+Route::get('/lpanel/product/new', function(){
+    return view('lpanel.front.addprod');
+})->name('new-products');
