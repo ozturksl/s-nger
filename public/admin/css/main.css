@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+}
+
+#sidebar-list li a {
+      color: black;
+      transition: 0.3s;
+
+}
+
+#sidebar-list li a:hover {
+      color: darkred;
+      transform: translateX(20px);
+      transition-duration: 0.3s;
+
+}
+
+
+
+.custom-color {
+      background-color: #f9f9ff;
+}
+
+.custom-border {
+      border: 2px solid #eabbbb;
+}
+
+.custom-border-right {
+      border-right: 2px solid #eabbbb;
+}
+
+.custom-border-top {
+      border-top: 2px solid #eabbbb;
+}
+
+.custom-border-bottom {
+      border-bottom: 2px solid #eabbbb;
+}
+
+.card:hover {
+      transform: translateY(20px);
+      transition-duration: 0.3s;
+}
+
+.card {
+      transition: 0.3s
+}
+
+.tables thead tr {
+      gap: 164px;
+}
+
+.sidebar-main {
+      width: 280px;
+}
+
+.custom-color {
+      min-width: 0 !important;
+      overflow-x: hidden;
+}
+
+.cards .custom-border {
+      transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cards .custom-border:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
