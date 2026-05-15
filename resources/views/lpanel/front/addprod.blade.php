@@ -15,12 +15,12 @@
             @include('lpanel.partials.topbar')
             <div class="flex-grow-1 p-4">
                 <div>
-                    <div class="container">
-                        <h1 class="fs-2 fw-bold">Ürün Ekle</h1>
-                        <p>Yeni ürün eklenilen sayfa</p>
-                        <div class="">
-                            <div>
-                                <h1><i class="bi bi-cart fs-4 fw-bold me-2"></i>Ürün Bilgileri</h1>
+                    <h1 class="fs-2 fw-bold">Ürün Ekle</h1>
+                    <p>Yeni ürün eklenilen sayfa</p>
+                    <div class="">
+                        <div class="custom-border rounded-4 mt-5 p-4">
+                            <div class="custom-border-bottom">
+                            <h1 class="fs-3 "><i class="bi bi-cart fs-3 me-2 text-danger"></i>Ürün Bilgileri</h1>
                             </div>
                         </div>
                     </div>

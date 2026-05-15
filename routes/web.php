@@ -42,4 +42,4 @@ Route::get('/lpanel/product', function(){
 
 Route::get('/lpanel/product/new', function(){
     return view('lpanel.front.addprod');
-})->name('new-products');
+})->name('newproducts');
