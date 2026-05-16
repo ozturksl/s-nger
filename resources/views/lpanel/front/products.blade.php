@@ -11,27 +11,30 @@
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
-        <div class="d-flex flex-column flex-grow-1 custom-color">
+
+        <div class="d-flex flex-column flex-grow-1 custom-color min-w-0">
             @include('lpanel.partials.topbar')
-            <div class="flex-grow-1 p-4">
 
-                <div class="d-flex">
-                    <div>
-                        <h1 class="fs-2 fw-bold">Ürün Yönetimi</h1>
-                        <p>Ürün yönetiminin sağlandığı sayfa</p>
+            <div class="flex-grow-1 p-3 p-md-4">
+                <div
+                    class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
+                    <div class="min-w-0">
+                        <h1 class="fs-2 fw-bold text-wrap mb-1">Ürün Yönetimi</h1>
+                        <p class="text-muted mb-0 text-wrap">Ürün yönetiminin sağlandığı sayfa</p>
                     </div>
-                    <div class="ms-auto mt-4">
+                    <div class="w-100 w-sm-auto">
                         <a href="{{ route('newproducts') }}"
-                            class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold">YENİ ÜRÜN
-                            EKLE</a>
+                            class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold d-inline-flex align-items-center justify-content-center text-nowrap">
+                            YENI ÜRÜN EKLE
+                        </a>
                     </div>
-
                 </div>
-                <div class="row pt-5">
-                    <div class="col-sm-12">
-                        <div class="custom-border rounded-4 bg-white overflow-hidden">
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
+
+                <div class="row mx-0 w-100">
+                    <div class="col-12 px-0">
+                        <div class="custom-border rounded-4 bg-white overflow-hidden w-100">
+                            <div class="table-responsive w-100">
+                                <table class="table table-hover mb-0 text-nowrap">
                                     <thead>
                                         <tr class="custom-border-bottom">
                                             <th>Ürün Adı</th>

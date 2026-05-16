@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="{{ asset('site/css/main.css') }}">
 @endsection
 
-
 @section('content')
-    <section>
+    <section class="overflow-hidden">
         <div class="container">
             <div class="row">
                 <h1 class="fw-bold text-center pt-5">HAKKIMIZDA</h1>
-                <div class="col-lg-6 col-12 pt-lg-5 mt-lg-5 ps-lg-4 pe-lg-2 px-3 pt-lg-0 pt-5">
+                <div class="col-lg-6 col-12 pt-lg-5 mt-lg-5 ps-lg-4 pe-lg-2 px-3 pt-4">
                     <h1 class="fw-bold about-title1">Hikayemiz ve Misyonumuz</h1>
-                    <p class="pb-4">
+                    <p class="pb-3 pb-lg-4">
                         Biz, dikiş makinasının sadece bir alet değil, aynı zamanda üretimin, yaratıcılığın ve geçim
                         kaynağının bir parçası olduğuna inanıyoruz. Bir terzinin dikiş makinası durduğunda, sadece bir
                         makine arızalanmaz; aynı zamanda müşterilerinin siparişleri gecikir, evine ekmek götürme planları
@@ -35,29 +34,33 @@
                         bilgisini modern tekniklerle birleştirerek hizmet vermeye devam edeceğiz. Çünkü bizim için misyon,
                         sadece bir cümle değil; her gün tekrar tekrar kanıtladığımız bir yaşam biçimidir.</p>
                 </div>
-                <div class="col-lg-6 pt-5 slider-photo">
-                    <a href="#"><img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4"></a>
+                <div class="col-lg-6 col-12 pt-4 pt-lg-5 slider-photo text-center">
+                    <a href="#" class="d-block">
+                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100" style="max-height: 450px; object-fit: cover;">
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mt-5">
+    <section class="mt-5 overflow-hidden">
         <div class="container whyus pb-4">
-            <div class="row">
-                <div class="col-lg-6">
-                <h1 class="fw-bold">Neden Bizi Tercih Etmelisiniz?</h1>
-                <ul>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>6 Ay - 2 Yıl Garanti</a></li>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Orijinal Yedek Parça Kullanımı</a></li>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Ücretsiz İlk Bakım</a></li>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Evde Servis İmkanı</a></li>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Hızlı Teslimat</a></li>
-                    <li><a href="#"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Kredi Kartına Taksit İmkanı</a></li>
-                </ul>
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-12 px-3">
+                    <h1 class="fw-bold mb-4">Neden Bizi Tercih Etmelisiniz?</h1>
+                    <ul class="ps-0">
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>6 Ay - 2 Yıl Garanti</a></li>
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Orijinal Yedek Parça Kullanımı</a></li>
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Ücretsiz İlk Bakım</a></li>
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Evde Servis İmkanı</a></li>
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Hızlı Teslimat</a></li>
+                        <li class="mb-2"><a href="#" class="d-flex align-items-center"><i class="bi bi-check-circle-fill fs-4 text-danger me-3"></i>Kredi Kartına Taksit İmkanı</a></li>
+                    </ul>
                 </div>
-               <div class="col-lg-6 pt-5 slider-photo">
-                    <a href="#"><img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4"></a>
+                <div class="col-lg-6 col-12 pt-4 pt-lg-0 slider-photo text-center">
+                    <a href="#" class="d-block">
+                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100" style="max-height: 400px; object-fit: cover;">
+                    </a>
                 </div>
             </div>
         </div>

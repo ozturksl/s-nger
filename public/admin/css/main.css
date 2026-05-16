@@ -3,26 +3,27 @@
 * {
       font-family: "DM Sans", sans-serif;
       font-weight: 400;
-      overflow: auto;
-      outline: 1px solid red !important; 
-}
-
-#sidebar-list li a {
-      color: black;
-      transition: 0.3s;
-
-}
-
-#sidebar-list li a:hover {
-      color: darkred;
-      transform: translateX(20px);
-      transition-duration: 0.3s;
-
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
 }
 
 html,
 body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
+}
+
+#sidebar-list li a {
+      color: black;
+      transition: all 0.3s ease;
+      display: inline-block;
+}
+
+#sidebar-list li a:hover {
+      color: darkred;
+      transform: translateX(10px);
 }
 
 img,
@@ -30,16 +31,15 @@ svg,
 video {
       max-width: 100%;
       height: auto;
-}
-
-* {
-      overflow-wrap: anywhere;
+      display: block;
 }
 
 .custom-color {
       background-color: #f9f9ff;
+      min-width: 0 !important;
+      overflow-x: hidden;
+      flex: 1;
 }
-
 
 .custom-border {
       border: 2px solid #eabbbb;
@@ -49,7 +49,6 @@ video {
       border-right: 2px solid #eabbbb;
 }
 
-
 .custom-border-top {
       border-top: 2px solid #eabbbb;
 }
@@ -58,37 +57,52 @@ video {
       border-bottom: 2px solid #eabbbb;
 }
 
-.card:hover {
-      transform: translateY(20px);
-      transition-duration: 0.3s;
-}
-
 .card {
-      transition: 0.3s
+      transition: all 0.3s ease;
 }
 
-.tables thead tr {
-      gap: 164px;
+.card:hover {
+      transform: translateY(-5px);
 }
 
 .sidebar-main {
       width: 280px;
-}
-
-.custom-color {
-      min-width: 0 !important;
-      overflow-x: hidden;
+      flex-shrink: 0;
 }
 
 .cards .custom-border {
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cards .custom-border:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+.table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+}
 
+.table {
+      width: 100%;
+      margin-bottom: 0;
+      vertical-align: top;
+}
 
+.form-control {
+      width: 100%;
+      max-width: 100%;
+}
 
+@media (max-width: 992px) {
+      .sidebar-main {
+            width: 100%;
+            position: relative;
+      }
+
+      .d-flex.flex-row {
+            flex-direction: column !important;
+      }
+}

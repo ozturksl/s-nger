@@ -12,15 +12,16 @@
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
 
-        <div class="d-flex flex-column flex-grow-1 custom-color">
+        <div class="d-flex flex-column flex-grow-1 custom-color min-w-0">
             @include('lpanel.partials.topbar')
 
-            <div class="flex-grow-1 p-4">
+            <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">Ürün Ekle</h1>
                     <p class="text-muted">Yeni ürün eklemek için aşağıdaki formu doldurun.</p>
                 </div>
-                <div class="custom-border rounded-4 bg-white shadow-sm">
+
+                <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
                     <div class="custom-border-bottom">
                         <h2 class="fs-4 px-4 py-3 m-0">
                             <i class="bi bi-cart fs-4 me-2 text-danger"></i>
@@ -31,26 +32,28 @@
                     <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="p-4">
+                        <div class="p-3 p-md-4">
                             <div class="mb-4">
                                 <label for="urun_adi" class="form-label fw-bold">
                                     ÜRÜN ADI
                                 </label>
-                                <input type="text" id="urun_adi" name="urun_adi" class="form-control custom-border"
-                                    placeholder="Ürün adını giriniz" value="">
+                                <input type="text" id="urun_adi" name="urun_adi"
+                                    class="form-control custom-border w-100" placeholder="Ürün adını giriniz"
+                                    value="">
                             </div>
                             <div class="mb-4">
                                 <label for="urun_aciklama" class="form-label fw-bold">
                                     ÜRÜN AÇIKLAMASI
                                 </label>
-                                <textarea id="urun_aciklama" name="urun_aciklama" class="form-control custom-border"
+                                <textarea id="urun_aciklama" name="urun_aciklama" class="form-control custom-border w-100"
                                     placeholder="Ürün açıklamasını giriniz" rows="4"></textarea>
                             </div>
+
                             <div class="mb-4">
                                 <label for="urun_fiyat" class="form-label fw-bold">
                                     ÜRÜN FİYATI
                                 </label>
-                                <div class="input-group">
+                                <div class="input-group flex-nowrap">
                                     <input type="number" id="urun_fiyat" name="urun_fiyat"
                                         class="form-control custom-border" placeholder="0.00" value="" step="0.01"
                                         min="0">
@@ -62,26 +65,28 @@
                                 <label for="urun_ozellikler" class="form-label fw-bold">
                                     ÜRÜN ÖZELLİKLERİ
                                 </label>
-                                <textarea id="urun_ozellikler" name="urun_ozellikler" class="form-control custom-border"
+                                <textarea id="urun_ozellikler" name="urun_ozellikler" class="form-control custom-border w-100"
                                     placeholder="Ürün özelliklerini giriniz (her özellik yeni satırda)" rows="5"></textarea>
                             </div>
+
                             <div class="mb-4">
                                 <label for="urun_foto" class="form-label fw-bold">
                                     ÜRÜN FOTOĞRAFI
                                 </label>
-                                <input class="form-control" type="file" id="urun_foto" name="urun_foto"
+                                <input class="form-control w-100" type="file" id="urun_foto" name="urun_foto"
                                     accept="image/jpeg,image/png,image/webp">
-                                <div class="form-text text-muted">
+                                <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>
                                     Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
                                 </div>
                             </div>
-                            <div class="d-flex gap-3 pt-2">
-                                <button type="submit" class="btn btn-success px-4 py-2">
+
+                            <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
+                                <button type="submit" class="btn btn-success px-4 py-2 col-12 col-sm-auto">
                                     <i class="bi bi-check-circle me-2"></i>
                                     Ürünü Kaydet
                                 </button>
-                                <a href="#" class="btn btn-outline-danger px-4 py-2">
+                                <a href="#" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
                                     <i class="bi bi-x-circle me-2"></i>
                                     İptal
                                 </a>

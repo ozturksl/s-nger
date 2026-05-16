@@ -11,53 +11,55 @@
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
-        <div class="d-flex flex-column flex-grow-1 custom-color">
-            @include('lpanel.partials.topbar')
-            <div class="flex-grow-1 p-4">
-                <h1 class="fs-2 fw-bold">Dashboard</h1>
-                <p class="fw-normal">Sistemi gerçek zamanlı izleyebildiğin ve kontrol edebildiğin alan.</p>
 
-                <div class="row g-4 cards">
+        <div class="d-flex flex-column flex-grow-1 custom-color min-w-0">
+            @include('lpanel.partials.topbar')
+
+            <div class="flex-grow-1 p-3 p-md-4">
+                <h1 class="fs-2 fw-bold text-wrap">Dashboard</h1>
+                <p class="fw-normal text-wrap">Sistemi gerçek zamanlı izleyebildiğin ve kontrol edebildiğin alan.</p>
+
+                <div class="row g-3 g-md-4 cards">
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="custom-border rounded-4 bg-white p-4 h-100">
+                        <div class="custom-border rounded-4 bg-white p-4 h-100 w-100 overflow-hidden">
                             <i class="bi bi-clipboard-data text-danger fs-1"></i>
                             <div class="mt-4">
-                                <h2 class="fw-bold fs-5">ÜRÜN SAYISI</h2>
-                                <p class="fs-2 mb-0">30</p>
+                                <h2 class="fw-bold fs-5 text-truncate">ÜRÜN SAYISI</h2>
+                                <p class="fs-2 mb-0 text-truncate">30</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="custom-border rounded-4 bg-white p-4 h-100">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="custom-border rounded-4 bg-white p-4 h-100 w-100 overflow-hidden">
                             <i class="bi bi-car-front text-danger fs-1"></i>
                             <div class="mt-4">
-                                <h2 class="fw-bold fs-5">BEKLEYEN KARGO</h2>
-                                <p class="fs-2 mb-0">30</p>
+                                <h2 class="fw-bold fs-5 text-truncate">BEKLEYEN KARGO</h2>
+                                <p class="fs-2 mb-0 text-truncate">30</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="custom-border rounded-4 bg-white p-4 h-100">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="custom-border rounded-4 bg-white p-4 h-100 w-100 overflow-hidden">
                             <i class="bi bi-person-raised-hand text-danger fs-1"></i>
                             <div class="mt-4">
-                                <h2 class="fw-bold fs-5">BEKLEYEN MÜŞTERİ</h2>
-                                <p class="fs-2 mb-0">30</p>
+                                <h2 class="fw-bold fs-5 text-truncate">BEKLEYEN MÜŞTERİ</h2>
+                                <p class="fs-2 mb-0 text-truncate">30</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row pt-5">
-                    <div class="col-sm-12">
-                        <div class="custom-border rounded-4 bg-white overflow-hidden">
+                <div class="row pt-4 pt-md-5 mx-0 w-100">
+                    <div class="col-12 px-0">
+                        <div class="custom-border rounded-4 bg-white overflow-hidden w-100">
                             <div class="custom-border-bottom p-4">
-                                <h2 class="fw-bold fs-5 mb-0">SİPARİŞLER</h2>
+                                <h2 class="fw-bold fs-5 mb-0 text-truncate">SİPARİŞLER</h2>
                             </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
+                            <div class="table-responsive w-100">
+                                <table class="table table-hover mb-0 text-nowrap">
                                     <thead>
                                         <tr class="custom-border-bottom">
                                             <th>Müşteri</th>

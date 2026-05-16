@@ -9,10 +9,10 @@
 @endsection
 
 @section('content')
-    <section class="py-5">
+    <section class="py-5 overflow-hidden">
         <div class="container">
-            <div class="row mb-4">
-                <div class="col-12">
+            <div class="row mb-4 mx-0">
+                <div class="col-12 px-0">
                     <h1 class="fw-bold">ÜRÜNLER</h1>
                     <p class="text-muted">Endüstriyel makineler ve ekipmanlar arasından ihtiyacınıza uygun ürünleri seçin.
                     </p>
@@ -20,11 +20,11 @@
             </div>
 
             <div class="row g-4">
-                <aside class="col-lg-3">
+                <aside class="col-lg-3 col-12">
                     <div class="card shadow-sm filter-card border-0">
                         <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h5 class="card-title mb-0">Filtreler</h5>
+                            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                                <h5 class="card-title mb-0" style="height: auto;">Filtreler</h5>
                                 <a href="#" class="small text-primary text-decoration-none">Sıfırla</a>
                             </div>
 
@@ -32,21 +32,34 @@
                                 <label class="form-label filter-section-title">Ara</label>
                                 <div class="position-relative">
                                     <input type="search" class="form-control filter-search" placeholder="Ürün ara...">
-                                    <span class="filter-icon">🔍</span>
+                                    <span
+                                        class="filter-icon position-absolute end-0 top-50 translate-middle-y pe-3">🔍</span>
                                 </div>
                             </div>
 
                             <div class="mb-4">
                                 <h6 class="filter-section-title">Kategori</h6>
                                 <ul class="filter-list list-unstyled mb-0">
-                                    <li><a href="#" class="filter-link">Tüm Ürünler <span class="badge">12</span></a>
+                                    <li>
+                                        <a href="#" class="filter-link">
+                                            <span>Tüm Ürünler</span> <span class="badge">12</span>
+                                        </a>
                                     </li>
-                                    <li><a href="#" class="filter-link">Makineler <span class="badge">8</span></a>
+                                    <li>
+                                        <a href="#" class="filter-link">
+                                            <span>Makineler</span> <span class="badge">8</span>
+                                        </a>
                                     </li>
-                                    <li><a href="#" class="filter-link">Aksesuarlar <span class="badge">5</span></a>
+                                    <li>
+                                        <a href="#" class="filter-link">
+                                            <span>Aksesuarlar</span> <span class="badge">5</span>
+                                        </a>
                                     </li>
-                                    <li><a href="#" class="filter-link">Yedek Parçalar <span
-                                                class="badge">3</span></a></li>
+                                    <li>
+                                        <a href="#" class="filter-link">
+                                            <span>Yedek Parçalar</span> <span class="badge">3</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -73,62 +86,165 @@
                     </div>
                 </aside>
 
-                <div class="col-lg-9">
+                <div class="col-lg-9 col-12">
                     <div class="row g-3">
-                        @php
-                            $products = [
-                                [
-                                    'title' => 'Endüstriyel Makina',
-                                    'price' => '600 TL',
-                                    'image' => 'site/assets/makina.png',
-                                ],
-                                [
-                                    'title' => 'Yüksek Kapasiteli Pres',
-                                    'price' => '1.250 TL',
-                                    'image' => 'site/assets/makina.png',
-                                ],
-                                [
-                                    'title' => 'Hassas Kesme Ünitesi',
-                                    'price' => '950 TL',
-                                    'image' => 'site/assets/makina.png',
-                                ],
-                                [
-                                    'title' => 'Otomatik Besleme Sistemi',
-                                    'price' => '1.750 TL',
-                                    'image' => 'site/assets/makina.png',
-                                ],
-                                ['title' => 'Taşıma Arabası', 'price' => '420 TL', 'image' => 'site/assets/makina.png'],
-                                ['title' => 'Bakım Kiti', 'price' => '220 TL', 'image' => 'site/assets/makina.png'],
-                            ];
-                        @endphp
 
-                        @foreach ($products as $key => $product)
-                            @php
-                                $price = str_replace([' TL', '.'], ['', ''], $product['price']);
-                            @endphp
-                            <div class="col-md-6 col-xl-4">
-                                <div class="card h-100 shadow-lg product-card overflow-hidden border-0">
-                                    <div class="position-relative overflow-hidden">
-                                        <img src="../{{ $product['image'] }}" class="card-img-top product-card-img"
-                                            alt="{{ $product['title'] }}">
-                                    </div>
-                                    <div class="card-body d-flex flex-column p-4">
-                                        <a href="{{ route('product-detail', ['id' => $key]) }}" style="text-decoration: none; color: inherit;">
-                                            <h5 class="card-title mb-2">{{ $product['title'] }}</h5>
-                                        </a>
-                                        <p class="text-secondary small mb-4">Yüksek performanslı, güvenilir ürün.</p>
-                                        <div class="mt-auto">
-                                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                                <p class="fw-bold text-danger mb-0 fs-5">{{ $product['price'] }}</p>
-                                            </div>
-                                            <a href="{{ route('product-detail', ['id' => $key]) }}" class="btn btn-outline-dark w-100 mt-2">
-                                                Detayları Gör
-                                            </a>
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}" class="card-img-top product-card-img"
+                                        alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
                                         </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}" class="card-img-top product-card-img"
+                                        alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
+                                        </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}" class="card-img-top product-card-img"
+                                        alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
+                                        </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}"
+                                        class="card-img-top product-card-img" alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
+                                        </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}"
+                                        class="card-img-top product-card-img" alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
+                                        </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6 col-12">
+                            <div class="card shadow-lg product-card overflow-hidden border-0">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('site/assets/makina.png') }}"
+                                        class="card-img-top product-card-img" alt="">
+                                </div>
+                                <div class="card-body d-flex flex-column p-4">
+                                    <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                        class="text-decoration-none color-inherit text-dark">
+                                        <h5 class="card-title mb-2">Dikiş Makinası</h5>
+                                    </a>
+                                    <p class="text-secondary small mb-4 product-desc"></p>
+                                    <div class="mt-auto">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <p class="fw-bold text-danger mb-0 fs-5">
+                                                500₺</p>
+                                        </div>
+                                        <a href="{{ route('product-detail', ['id' => 5]) }}"
+                                            class="btn btn-outline-dark w-100 mt-2">
+                                            Detayları Gör
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
