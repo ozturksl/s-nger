@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('user_id');
-            $table->varchar('user_name',25);
-            $table->varchar('user_password',22);
-            $table->varchar('user_photo',255);
+            $table->string('user_name',25);
+            $table->string('user_password',22);
+            $table->string('user_photo',255);
             $table->timestamps();
         });
     }

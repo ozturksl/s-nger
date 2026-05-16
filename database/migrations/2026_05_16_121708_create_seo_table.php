@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('seo', function (Blueprint $table) {
             $table->id('seo_id');
-            $table->varchar('seo_favicon',255);
-            $table->varchar('seo_icon',255);
-            $table->varhcar('seo_comment',160);
+            $table->string('seo_favicon',255);
+            $table->string('seo_icon',255);
+            $table->string('seo_comment',160);
             $table->text('seo_keys');
             $table->timestamps();
         });

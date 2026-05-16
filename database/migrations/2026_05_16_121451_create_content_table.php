@@ -12,10 +12,10 @@ return new class extends Migration
             $table->id('content_id');
             $table->text('ct_instagram');
             $table->text('ct_linkedin');
-            $table->varchar('ct_number1',11);
-            $table->varchar('ct_number2',11);
+            $table->string('ct_number1',11);
+            $table->string('ct_number2',11);
             $table->text('ct_address');
-            $table->varchar('ct_mail',50);
+            $table->string('ct_mail',50);
             $table->timestamps();
 
         });
