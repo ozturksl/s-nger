@@ -3,6 +3,8 @@
 * {
       font-family: "DM Sans", sans-serif;
       font-weight: 400;
+      overflow: auto;
+      outline: 1px solid red !important; 
 }
 
 #sidebar-list li a {
@@ -18,9 +20,26 @@
 
 }
 
+html,
+body {
+      overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+      max-width: 100%;
+      height: auto;
+}
+
+* {
+      overflow-wrap: anywhere;
+}
+
 .custom-color {
       background-color: #f9f9ff;
 }
+
 
 .custom-border {
       border: 2px solid #eabbbb;

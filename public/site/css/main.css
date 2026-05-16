@@ -2,6 +2,8 @@
 
 * {
     font-family: "Saira", sans-serif;
+    overflow:auto;
+    outline: 1px solid red !important; 
 }
 
 
@@ -11,11 +13,26 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
     padding-top: 70px;
-    overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    word-break: break-word;
+}
+
+* {
+    overflow-wrap: anywhere;
 }
 
 .cart-actions {
