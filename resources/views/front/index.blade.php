@@ -40,8 +40,7 @@
 
                 <div class="col-lg-6 col-12 pt-4 pt-lg-5 mt-3 mt-lg-5 slider-photo text-center">
                     <a href="#" class="d-block">
-                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid rounded-4 w-100"
-                            style="max-height: 450px; object-fit: cover;" alt="Slider">
+                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid rounded-4 w-100" alt="Slider">
                     </a>
                 </div>
             </div>

@@ -24,7 +24,7 @@
                     <div class="card shadow-sm filter-card border-0">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-                                <h5 class="card-title mb-0" style="height: auto;">Filtreler</h5>
+                                <h5 class="card-title mb-0">Filtreler</h5>
                                 <a href="#" class="small text-primary text-decoration-none">Sıfırla</a>
                             </div>
 

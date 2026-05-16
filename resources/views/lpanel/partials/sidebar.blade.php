@@ -1,5 +1,4 @@
-<div class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-dark bg-white min-vh-100 border-end sidebar-main"
-    style="width: 280px;">
+<div class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-dark bg-white min-vh-100 border-end sidebar-main">
 
     <a href="{{ route('dashboard') }}" class="d-flex align-items-center text-dark text-decoration-none">
         <img src="{{ asset('site/assets/logo.png') }}" width="200" height="auto" class="ms-2">
@@ -48,7 +47,7 @@
 </div>
 
 
-<div class="d-flex d-md-none flex-column flex-shrink-0 bg-body-tertiary border-end" style="width: 4.5rem;">
+<div class="d-flex d-md-none flex-column flex-shrink-0 bg-body-tertiary border-end">
 
     <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none text-center" title="Ana Sayfa">
         <img src="{{ asset('site/assets/logo.png') }}" width="40" height="auto">

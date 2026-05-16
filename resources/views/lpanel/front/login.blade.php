@@ -38,8 +38,7 @@
                         </button>
                     </form>
                     <div class="text-center">
-                        <img src="{{ asset('admin/assets/tamir.png') }}" class="img-fluid pt-4 mw-100"
-                            style="max-height: 200px; object-fit: contain;">
+                        <img src="{{ asset('admin/assets/tamir.png') }}" class="img-fluid pt-4 mw-100">
                     </div>
                 </div>
             </div>

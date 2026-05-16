@@ -16,7 +16,7 @@
                     <div class="ratio ratio-16x9 h-100 min-vh-50">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3061.1974711751313!2d32.83898267669231!3d39.892210871528924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f6345d32005%3A0xcfec5046e21a6a57!2sAnkara%20Singer%20Yetkili%20Servisi%20ve%20bayii!5e0!3m2!1str!2str!4v1778475040482!5m2!1str!2str"
-                            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                             class="rounded-4"></iframe>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
             <div class="swiper testimonialsSwiper mt-5 px-1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto" style="max-width: 350px;">
+                        <div class="testimonial-card w-100 mx-auto">
                             <div class="testimonial-header">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto" style="max-width: 350px;">
+                        <div class="testimonial-card w-100 mx-auto">
                             <div class="testimonial-header">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto" style="max-width: 350px;">
+                        <div class="testimonial-card w-100 mx-auto">
                             <div class="testimonial-header">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto" style="max-width: 350px;">
+                        <div class="testimonial-card w-100 mx-auto">
                             <div class="testimonial-header">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto" style="max-width: 350px;">
+                        <div class="testimonial-card w-100 mx-auto">
                             <div class="testimonial-header">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>

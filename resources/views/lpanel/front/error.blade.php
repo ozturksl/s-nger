@@ -18,14 +18,13 @@
     </nav>
 
     <div class="container-fluid px-3 px-md-5">
-        <div class="row align-items-center justify-content-center mx-0 w-100 overflow-hidden"
-            style="min-height: calc(100vh - 150px);">
+        <div class="row align-items-center justify-content-center mx-0 w-100 overflow-hidden">
 
             <div class="col-lg-6 col-12 py-4 py-lg-5 text-center text-lg-start min-w-0">
                 <h1 class="display-5 display-md-4 fw-bold text-dark mb-3 text-wrap">Sayfa Sanırım Bir Yerlerde Kayboldu...
                 </h1>
 
-                <p class="text-muted mb-4 fs-5 text-wrap" style="line-height: 1.6;">
+                <p class="text-muted mb-4 fs-5 text-wrap">
                     Aradığınız sayfayı biz de her yerde aradık ama maalesef bulamadık.
                     Muhtemelen linkte ufak bir yazım yanlışı yapıldı ya da aradığınız içerik,
                     sistemimizi güncellerken başka bir adrese taşındı. Belki de sayfa kısa

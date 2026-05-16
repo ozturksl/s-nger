@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-6 col-12 pt-4 pt-lg-5 slider-photo text-center">
                     <a href="#" class="d-block">
-                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100" style="max-height: 450px; object-fit: cover;">
+                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100">
                     </a>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-lg-6 col-12 pt-4 pt-lg-0 slider-photo text-center">
                     <a href="#" class="d-block">
-                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100" style="max-height: 400px; object-fit: cover;">
+                        <img src="{{ asset('site/assets/slider.png') }}" class="img-fluid mt-lg-5 rounded-4 w-100">
                     </a>
                 </div>
             </div>

@@ -12,11 +12,9 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-}
-
-body {
     padding-top: 70px;
 }
+
 
 img,
 svg,
@@ -32,8 +30,8 @@ a {
 }
 
 .swiper-button-next,
-.swiper-button-prev{
-    color:red;
+.swiper-button-prev {
+    color: red;
 }
 
 .navbar-brand img {
@@ -186,7 +184,7 @@ a {
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 .product-card-img {
@@ -634,7 +632,7 @@ a {
 
 .links ul li a {
     display: inline-block;
-    color: white;
+    color: rgba(255, 255, 255, .5);
     transition-duration: 0.3s;
 }
 
@@ -662,12 +660,15 @@ a {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
+
     .service-card {
         height: 240px;
     }
+
     .centerclass {
         text-align: center;
     }
+
     .centerclass img {
         margin: 20px 0 0 0 !important;
     }
@@ -677,22 +678,28 @@ a {
     .slider-texts h1 {
         font-size: 28px;
     }
+
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
+
     .service-card {
         height: 200px;
     }
+
     .service-overlay p {
         display: none;
     }
+
     .product-card .card-body {
         padding: 1rem;
     }
+
     .navbar-brand img {
         max-width: 150px;
     }
+
     .testimonial-card {
         padding: 16px;
     }
