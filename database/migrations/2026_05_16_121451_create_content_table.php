@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('ct_number2',11);
             $table->text('ct_address');
             $table->string('ct_mail',50);
+            $table->text('ct_harita');
             $table->timestamps();
 
         });

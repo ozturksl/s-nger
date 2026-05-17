@@ -86,7 +86,7 @@
                                     <i class="bi bi-check-circle me-2"></i>
                                     Ürünü Kaydet
                                 </button>
-                                <a href="#" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
+                                <a href="{{ route('products') }}" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
                                     <i class="bi bi-x-circle me-2"></i>
                                     İptal
                                 </a>

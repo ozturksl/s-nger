@@ -29,21 +29,45 @@
                         </h2>
                     </div>
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('seoupdate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
-                                <label for="seo_aciklama" class="form-label fw-bold">
+                                <label for="seocomment" class="form-label fw-bold">
                                     SEO AÇIKLAMA
                                 </label>
-                                <textarea id="seo_aciklama" name="seo_aciklama" class="form-control custom-border w-100" placeholder="Açıklama giriniz." rows="3"></textarea>
+                                <textarea name="seocomment" class="form-control custom-border w-100" placeholder="Açıklama giriniz." rows="3"></textarea>
                             </div>
                             <div class="mb-4">
-                                <label for="anahtar_kelimeler" class="form-label fw-bold">
+                                <label for="seokey" class="form-label fw-bold">
                                     ANAHTAR KELİMELER
                                 </label>
-                                <textarea id="anahtar_kelimeler" name="anahtar_kelimeler" class="form-control custom-border w-100" placeholder="Anahtar kelime giriniz."></textarea>
+                                <textarea name="seokey" class="form-control custom-border w-100" placeholder="Anahtar kelime giriniz."></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="seofavicon" class="form-label fw-bold">
+                                    FAVİCON
+                                </label>
+                                <input class="form-control w-100" type="file" name="seofavicon"
+                                    accept="image/jpeg,image/png,image/webp">
+                                <div class="form-text text-muted text-wrap">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">-+
+                                <label for="seoicon" class="form-label fw-bold">
+                                    LOGO
+                                </label>
+                                <input class="form-control w-100" type="file" name="seoicon"
+                                    accept="image/jpeg,image/png,image/webp">
+                                <div class="form-text text-muted text-wrap">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
+                                </div>
                             </div>
                             
                             <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
