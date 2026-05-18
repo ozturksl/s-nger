@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Kullanıcı Ayarları
+    Kullanıcı Yönetimi
 @endsection
 
 @section('css')
@@ -16,69 +16,62 @@
             @include('lpanel.partials.topbar')
 
             <div class="flex-grow-1 p-3 p-md-4">
-                <div class="mb-4">
-                    <h1 class="fs-2 fw-bold mb-1">Kullanıcı Ayarları</h1>
-                    <p class="text-muted">Kullanıcı Ayarlarının yapıldığı bölüm</p>
+                <div
+                    class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
+                    <div class="min-w-0">
+                        <h1 class="fs-2 fw-bold text-wrap mb-1">Kullanıcı Yönetimi</h1>
+                        <p class="text-muted mb-0 text-wrap">Kullanıcı yönetiminin sağlandığı sayfa</p>
+                    </div>
+                    <div class="w-100 w-sm-auto">
+                        <a href="{{ route('newuser') }}"
+                            class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold d-inline-flex align-items-center justify-content-center text-nowrap">
+                            YENI KULLANICI EKLE
+                        </a>
+                    </div>
                 </div>
 
-                <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
-                    <div class="custom-border-bottom">
-                        <h2 class="fs-4 px-4 py-3 m-0">
-                            <i class="bi bi-person fs-4 me-2 text-danger"></i>
-                            Kullanıcı Bilgileri
-                        </h2>
-                    </div>
-
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="p-3 p-md-4">
-                            <div class="mb-4">
-                                <label for="kullanici_adi" class="form-label fw-bold">
-                                    KULLANICI ADI
-                                </label>
-                                <input type="text" id="kullanici_adi" name="kullanici_adi"
-                                    class="form-control custom-border w-100" placeholder="Kullanıcı adı giriniz."
-                                    value="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="sifre" class="form-label fw-bold">
-                                    ŞİFRE
-                                </label>
-                                <input type="password" id="sifre" name="sifre"
-                                    class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="sifre_tekrar" class="form-label fw-bold">
-                                    ŞİFRE TEKRAR
-                                </label>
-                                <input type="password" id="sifre_tekrar" name="sifre_tekrar"
-                                    class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="kullanici_foto" class="form-label fw-bold">
-                                    KULLANICI FOTOĞRAFI
-                                </label>
-                                <input class="form-control w-100" type="file" id="kullanici_foto" name="kullanici_foto"
-                                    accept="image/jpeg,image/png,image/webp">
-                                <div class="form-text text-muted text-wrap">
-                                    <i class="bi bi-info-circle me-1"></i>
-                                    Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
-                                <button type="submit" class="btn btn-success px-4 py-2 col-12 col-sm-auto">
-                                    <i class="bi bi-check-circle me-2"></i>
-                                    Kaydet
-                                </button>
-                                <a href="#" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
-                                    <i class="bi bi-x-circle me-2"></i>
-                                    İptal
-                                </a>
+                <div class="row mx-0 w-100">
+                    <div class="col-12 px-0">
+                        <div class="custom-border rounded-4 bg-white overflow-hidden w-100">
+                            <div class="table-responsive w-100">
+                                <table class="table table-hover mb-0 text-nowrap">
+                                    <thead>
+                                        <tr class="custom-border-bottom">
+                                            <th>Kullanıcı Adı</th>
+                                            <th>Ad-Soyad</th>
+                                            <th>Kullanıcı Türü</th>
+                                            <th>Durum</th>
+                                            <th>Eylem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>slhozturk26</td>
+                                            <td>Salih Öztürk</td>
+                                            <td>Yönetici</td>
+                                            <td><span class="badge bg-danger">Aktif Değil</span></td>
+                                            <td>
+                                                <a href="{{ route('updateuser') }}" class="me-2"><i
+                                                        class="bi bi-pencil text-success"></i></a>
+                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>hayriozturk74</td>
+                                            <td>Hayri Öztürk</td>
+                                            <td>Kullanıcı</td>
+                                            <td><span class="badge bg-success">Aktif</span></td>
+                                            <td>
+                                                <a href="{{ route('deleteuser') }}" class="me-2"><i
+                                                        class="bi bi-pencil text-success"></i></a>
+                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

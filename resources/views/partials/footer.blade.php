@@ -3,7 +3,7 @@
         <div class="row g-4 justify-content-lg-between text-center text-lg-start">
 
             <div class="col-lg-3 col-12 footer-first">
-                <img src="{{ asset('site/assets/logo.png') }}" class="img-fluid d-block mx-auto mx-lg-0" alt="Logo">
+                <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" class="img-fluid d-block mx-auto mx-lg-0" alt="Logo">
                 <p class="text-white-50 mt-3small">Lorem Ipsum is simply dummy text of the printing and typesetting
                     industry.
                     Lorem Ipsum has been the industry's standard dummy</p>

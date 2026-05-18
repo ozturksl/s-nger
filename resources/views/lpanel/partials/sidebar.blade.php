@@ -28,7 +28,7 @@
         </li>
         <li>
             <a href="{{ route('user') }}" class="nav-link">
-                <i class="bi bi-person fs-4 fw-bold me-2"></i> Profil
+                <i class="bi bi-person fs-4 fw-bold me-2"></i> Kullanıcı Ayarları
             </a>
         </li>
     </ul>

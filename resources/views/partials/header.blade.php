@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('site/assets/logo.png') }}" class="img-fluid" alt="Logo">
+            <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" class="img-fluid" alt="Logo">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -8,9 +8,29 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+@if ($errors->any())
+    <div
+        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+        <strong style="display: block; margin-bottom: 5px;">Lütfen aşağıdaki hataları düzeltiniz:</strong>
+        <ul style="margin: 0; padding-left: 20px;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('error'))
+    <div
+        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+        <strong>Hata:</strong> {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div
+        style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+        <strong>Başarılı!</strong> {{ session('success') }}
     </div>
 @endif
 

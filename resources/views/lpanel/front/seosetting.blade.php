@@ -8,6 +8,32 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
+@if ($errors->any())
+    <div
+        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+        <strong style="display: block; margin-bottom: 5px;">Lütfen aşağıdaki hataları düzeltiniz:</strong>
+        <ul style="margin: 0; padding-left: 20px;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('error'))
+    <div
+        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+        <strong>Hata:</strong> {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div
+        style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+        <strong>Başarılı!</strong> {{ session('success') }}
+    </div>
+@endif
+
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
@@ -20,7 +46,7 @@
                     <h1 class="fs-2 fw-bold mb-1">SEO Ayarları</h1>
                     <p class="text-muted">SEO Ayarlarının yapıldığı bölüm</p>
                 </div>
-                
+
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
                     <div class="custom-border-bottom">
                         <h2 class="fs-4 px-4 py-3 m-0">
@@ -47,6 +73,7 @@
                             </div>
 
                             <div class="mb-4">
+                                <img src="{{ asset('storage/seo/' . $seoData->seo_favicon) }}" width="150" height="auto" alt="">
                                 <label for="seofavicon" class="form-label fw-bold">
                                     FAVİCON
                                 </label>
@@ -58,7 +85,8 @@
                                 </div>
                             </div>
 
-                            <div class="mb-4">-+
+                            <div class="mb-4">
+                                <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" width="150" height="auto" alt="">
                                 <label for="seoicon" class="form-label fw-bold">
                                     LOGO
                                 </label>
@@ -69,7 +97,7 @@
                                     Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
                                 </div>
                             </div>
-                            
+
                             <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
                                 <button type="submit" class="btn btn-success px-4 py-2 col-12 col-sm-auto">
                                     <i class="bi bi-check-circle me-2"></i>

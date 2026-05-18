@@ -21,6 +21,12 @@ body {
       display: inline-block;
 }
 
+.form-control:focus {
+      box-shadow: none;
+      outline: 0;
+      border-color:red;
+}
+
 #sidebar-list li a:hover {
       color: darkred;
       transform: translateX(10px);

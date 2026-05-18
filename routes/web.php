@@ -28,6 +28,12 @@ Route::get('/urun/{id?}', function ($id = 0) {
     return view('front.product-detail');
 })->name('product-detail');
 
+
+
+
+
+
+
 // Yönetim Paneli
 Route::get('/lpanel/login', function () {
     return view('lpanel.front.login');
@@ -37,6 +43,9 @@ Route::get('/lpanel/dashboard', function () {
     return view('lpanel.front.index');
 })->name('dashboard');
 
+
+
+
 Route::get('/lpanel/product', function () {
     return view('lpanel.front.products');
 })->name('products');
@@ -45,11 +54,17 @@ Route::get('/lpanel/product/new', function () {
     return view('lpanel.front.addprod');
 })->name('newproducts');
 
+
+
+
 Route::get('/lpanel/content/', function () {
     return view('lpanel.front.content');
 })->name('content');
 
 Route::post('/lpanel/content/', [ContentController::class, 'updateContent'])->name('contentupdate');
+
+
+
 
 Route::get('/lpanel/seo/', function () {
     return view('lpanel.front.seosetting');
@@ -57,9 +72,34 @@ Route::get('/lpanel/seo/', function () {
 
 Route::post('/lpanel/seo/', [SeoController::class, 'updateSeo'])->name('seoupdate');
 
+
+
+
+
+
+
 Route::get('/lpanel/user/', function () {
     return view('lpanel.front.usersetting');
 })->name('user');
+
+Route::get('/lpanel/user/new', function () {
+    return view('lpanel.front.useradd');
+})->name('newuser');
+
+Route::get('/lpanel/user/update/{id}', function () {
+    return view('lpanel.front.userupdate');
+})->name('updateuser');
+
+Route::get('/lpanel/user/delete/{id}', function () {
+    return view('lpanel.front.usersetting');
+})->name('deleteuser');
+
+
+
+
+
+
+
 
 Route::get('/lpanel/error', function () {
     return view('lpanel.front.error');
