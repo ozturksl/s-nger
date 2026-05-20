@@ -2,12 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class UsersModel extends Model
+class UsersModel extends Authenticatable
 {
-    protected $table ="users";
-    protected $primaryKey = 'user_id';
-    protected $fillable = ['user_nickname', 'user_name','user_password','user_photo','user_status'];
+    use HasFactory;
 
+    protected $table = 'users';
+
+    protected $primaryKey = 'user_id';
+
+    protected $fillable = [
+        'user_nickname',
+        'user_name',
+        'user_password',
+        'user_type_id',
+        'user_photo',
+    ];
+
+    protected $hidden = [
+        'user_password',
+    ];
+
+    public function type()
+    {
+        return $this->belongsTo(UserTypeModel::class, 'user_type_id', 'usertype_id');
+
+        return $this->belongsTo(UserStatusModel::class, 'user_status_id', 'userstatus_id');
+    }
 }

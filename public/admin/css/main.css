@@ -21,10 +21,15 @@ body {
       display: inline-block;
 }
 
+.navbar-mobile {
+      width: 70px;
+      float: left;
+}
+
 .form-control:focus {
       box-shadow: none;
       outline: 0;
-      border-color:red;
+      border-color: red;
 }
 
 #sidebar-list li a:hover {
@@ -100,15 +105,4 @@ video {
 .form-control {
       width: 100%;
       max-width: 100%;
-}
-
-@media (max-width: 992px) {
-      .sidebar-main {
-            width: 100%;
-            position: relative;
-      }
-
-      .d-flex.flex-row {
-            flex-direction: column !important;
-      }
 }

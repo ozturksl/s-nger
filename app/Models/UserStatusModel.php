@@ -9,14 +9,14 @@ class UserTypeModel extends Model
 {
     use HasFactory;
 
-    protected $table = "usertype";
+    protected $table = "user_status_models";
     
-    protected $primaryKey = 'usertype_id';
+    protected $primaryKey = 'userstatus_id';
     
-    protected $fillable = ['usertype_name']; 
+    protected $fillable = ['user_status_name']; 
 
     public function users()
     {
-        return $this->hasMany(UsersModel::class, 'user_type_id', 'usertype_id');
+        return $this->hasMany(UsersModel::class, 'user_status_id', 'userstatus_id');
     }
 }

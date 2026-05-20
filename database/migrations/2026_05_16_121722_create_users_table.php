@@ -13,8 +13,9 @@ return new class extends Migration
             $table->string('user_nickname',50);
             $table->string('user_name',25);
             $table->string('user_password',22);
+            $table->foreignId('user_type_id')->constrained('usertype', 'usertype_id')->onDelete('cascade');
+            $table->foreignId('user_status_id')->constrained('user_status_models', 'user_status_id')->onDelete('cascade');
             $table->string('user_photo',255);
-            $table->boolean('user_status');
             $table->timestamps();
         });
     }
