@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
@@ -28,13 +29,8 @@ Route::get('/urun/{id?}', function ($id = 0) {
     return view('front.product-detail');
 })->name('product-detail');
 
-
-
-
-
-
-
 // Yönetim Paneli
+
 Route::get('/lpanel/login', function () {
     return view('lpanel.front.login');
 })->name('login');
@@ -43,8 +39,9 @@ Route::get('/lpanel/dashboard', function () {
     return view('lpanel.front.index');
 })->name('dashboard');
 
-
-
+Route::get('/lpanel/error', function () {
+    return view('lpanel.front.error');
+})->name('error');
 
 Route::get('/lpanel/product', function () {
     return view('lpanel.front.products');
@@ -54,53 +51,27 @@ Route::get('/lpanel/product/new', function () {
     return view('lpanel.front.addprod');
 })->name('newproducts');
 
-
-
-
-Route::get('/lpanel/content/', function () {
+Route::get('/lpanel/content', function () {
     return view('lpanel.front.content');
 })->name('content');
 
-Route::post('/lpanel/content/', [ContentController::class, 'updateContent'])->name('contentupdate');
+Route::post('/lpanel/content', [ContentController::class, 'updateContent'])->name('contentupdate');
 
-
-
-
-Route::get('/lpanel/seo/', function () {
+Route::get('/lpanel/seo', function () {
     return view('lpanel.front.seosetting');
 })->name('seo');
 
-Route::post('/lpanel/seo/', [SeoController::class, 'updateSeo'])->name('seoupdate');
+Route::post('/lpanel/seo', [SeoController::class, 'updateSeo'])->name('seoupdate');
 
-
-
-
-
-
-
-Route::get('/lpanel/user/', function () {
-    return view('lpanel.front.usersetting');
-})->name('user');
-
+Route::get('/lpanel/user', [UsersController::class, 'getUser'])->name('user');
 Route::get('/lpanel/user/new', function () {
     return view('lpanel.front.useradd');
 })->name('newuser');
 
-Route::get('/lpanel/user/update/{id}', function () {
-    return view('lpanel.front.userupdate');
-})->name('updateuser');
+Route::post('/lpanel/user/added', [UsersController::class, 'addUser'])->name('addeduser');
 
-Route::get('/lpanel/user/delete/{id}', function () {
-    return view('lpanel.front.usersetting');
-})->name('deleteuser');
+Route::get('/lpanel/user/update/{id}', [UsersController::class, 'updateUser'])->name('updateuser');
 
+Route::post('/lpanel/user/update-action/{id}', [UsersController::class, 'updateUserAction'])->name('updateduser');
 
-
-
-
-
-
-
-Route::get('/lpanel/error', function () {
-    return view('lpanel.front.error');
-})->name('error');
+Route::get('/lpanel/user/delete/{id}', [UsersController::class, 'deleteUser'])->name('deleteuser');

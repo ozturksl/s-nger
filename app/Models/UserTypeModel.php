@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class UserTypeModel extends Model
 {
     use HasFactory;
 
-    protected $table = "usertype";
-    
-    protected $primaryKey = 'usertype_id';
-    
-    protected $fillable = ['usertype_name']; 
+    protected $table = 'usertype';
 
-    public function users()
-    {
-        return $this->hasMany(UsersModel::class, 'user_type_id', 'usertype_id');
-    }
+    protected $primaryKey = 'usertype_id';
+
+    protected $fillable = ['usertype_name'];
+
+   public function users()
+{
+    return $this->hasMany(\App\Models\User::class, 'user_type_id', 'usertype_id');
+}
 }

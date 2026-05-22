@@ -2,55 +2,148 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsersModel;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
-    public function addUser(Request $request){
-        
-    }
-
-    public function getUser(){
-
-    }
-
-    public function updateUser(){
+    public function addUser(Request $request)
+    {
         $request->validate([
-            'adsoyad' => 'sometimes|nullable|url|max:255',
-            'kullanici_adi' => 'sometimes|nullable|url|max:255',
-            'kullanici_tur' => 'sometimes|nullable|string|max:20|regex:/^[0-9+\s\(\)-]+$/',
-            'kullanici_durum' => 'sometimes|nullable|string|max:20|regex:/^[0-9+\s\(\)-]+$/',
-            'sifre' => 'sometimes|nullable|string|max:1000',
-            'kullanici_foto' => 'sometimes|nullable|email:rfc,dns|max:100',
+            'adsoyad' => 'required|string|max:25',
+            'kullanici_adi' => 'required|string|max:50|unique:users,user_nickname',
+            'sifre' => 'required|string|min:4|max:22',
+            'sifre_tekrar' => 'required|same:sifre',
+            'user_type_id' => 'required|exists:usertype,usertype_id',
+            'user_status_id' => 'required|exists:user_status_models,user_status_id',
         ], [
-            'insta-link.url' => 'Lütfen geçerli bir Instagram URL adresi giriniz.',
-            'linkedin-link.url' => 'Lütfen geçerli bir Linkedin URL adresi giriniz.',
-            'mail.email' => 'Lütfen geçerli ve aktif bir e-posta adresi giriniz.',
-            'number1.regex' => 'Telefon 1 formatı geçersiz (Sadece rakam, +, boşluk ve parantez içerebilir).',
-            'number2.regex' => 'Telefon 2 formatı geçersiz.',
-            'max' => 'Girilen değer çok uzun, lütfen sınırları aşmayınız.',
+            'adsoyad.required' => 'Ad Soyad alanı boş bırakılamaz.',
+            'kullanici_adi.required' => 'Kullanıcı Adı alanı boş bırakılamaz.',
+            'sifre.required' => 'Şifre alanı boş bırakılamaz.',
+            'sifre_tekrar.required' => 'Şifre Tekrar alanı boş bırakılamaz.',
+            'user_type_id.required' => 'Kullanıcı Türü seçimi boş bırakılamaz.',
+            'user_status_id.required' => 'Kullanıcı Durumu seçimi boş bırakılamaz.',
+
+            'max' => 'Girilen değer çok uzun.',
+            'same' => 'Girdiğiniz şifreler birbiriyle eşleşmiyor.',
+            'unique' => 'Bu kullanıcı adı zaten alınmış.',
+            'exists' => 'Geçersiz bir seçim yaptınız.',
         ]);
 
         try {
-            $currentContent = DB::table('content')->where('content_id', 1)->first();
+            $fotoAdi = null;
+            if ($request->hasFile('kullanici_foto')) {
+                $file = $request->file('kullanici_foto');
+                $fotoAdi = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('uploads/users'), $fotoAdi);
+            }
+
+            UsersModel::create([
+                'user_name' => $request->input('adsoyad'),
+                'user_nickname' => $request->input('kullanici_adi'),
+                'user_password' => bcrypt($request->input('sifre')),
+                'user_photo' => $fotoAdi,
+                'user_type_id' => $request->input('user_type_id'),
+                'user_status_id' => $request->input('user_status_id'),
+            ]);
+
+            return redirect()->route('user')->with('success', 'Kullanıcı başarıyla eklendi.');
+
+        } catch (Exception $e) {
+            \Log::error('Kullanıcı ekleme hatası: '.$e->getMessage());
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Kullanıcı eklenirken bir hata oluştu: '.$e->getMessage());
+        }
+    }
+
+    public function getUser()
+    {
+        try {
+            $users = DB::table('users')
+                ->join('usertype', 'users.user_type_id', '=', 'usertype.usertype_id')
+                ->join('user_status_models', 'users.user_status_id', '=', 'user_status_models.user_status_id')
+                ->select(
+                    'users.*',
+                    'usertype.usertype_name as tur_adi',
+                    'user_status_models.user_status_name as durum_adi'
+                )
+                ->get();
+
+            return view('lpanel.front.usersetting', compact('users'));
+
+        } catch (Exception $e) {
+            Log::error('Kullanıcı listeleme hatası: '.$e->getMessage());
+
+            return redirect()->back()->with('error', 'Kullanıcılar listelenirken bir hata oluştu.');
+        }
+    }
+
+    public function updateUser($id)
+    {
+        $user = DB::table('users')->where('user_id', $id)->first();
+
+        if (! $user) {
+            return redirect()->back()->with('error', 'Kullanıcı bulunamadı.');
+        }
+
+        return view('lpanel.front.userupdate', compact('user'));
+    }
+
+    public function updateUserAction(Request $request)
+    {
+         $request->validate([
+            'adsoyad' => 'string|max:25',
+            'kullanici_adi' => 'string|max:50|unique:users,user_nickname',
+            'sifre' => 'string|min:4|max:22',
+            'sifre_tekrar' => 'same:sifre',
+            'user_type_id' => 'exists:usertype,usertype_id',
+            'user_status_id' => 'exists:user_status_models,user_status_id',
+        ], [
+            'max' => 'Girilen değer çok uzun.',
+            'same' => 'Girdiğiniz şifreler birbiriyle eşleşmiyor.',
+            'unique' => 'Bu kullanıcı adı zaten alınmış.',
+            'exists' => 'Geçersiz bir seçim yaptınız.',
+        ]);
+
+        try {
+            $userId = $request->input('user_id');
+            $currentContent = DB::table('users')->where('user_id', $userId)->first();
+
+            if (! $currentContent) {
+                return redirect()->back()->with('error', 'Güncellenecek kullanıcı bulunamadı.');
+            }
 
             $data = [
-                'ct_instagram' => $request->filled('insta-link') ? strip_tags($request->input('insta-link')) : ($currentContent?->ct_instagram ?? ''),
-                'ct_linkedin' => $request->filled('linkedin-link') ? strip_tags($request->input('linkedin-link')) : ($currentContent?->ct_linkedin ?? ''),
-                'ct_number1' => $request->filled('number1') ? strip_tags($request->input('number1')) : ($currentContent?->ct_number1 ?? ''),
-                'ct_number2' => $request->filled('number2') ? strip_tags($request->input('number2')) : ($currentContent?->ct_number2 ?? ''),
-                'ct_address' => $request->filled('address') ? strip_tags($request->input('address')) : ($currentContent?->ct_address ?? ''),
-                'ct_mail' => $request->filled('mail') ? strip_tags($request->input('mail')) : ($currentContent?->ct_mail ?? ''),
-                'ct_harita' => $request->filled('harita') ? trim($request->input('harita')) : ($currentContent?->ct_harita ?? ''),
+                'user_name' => strip_tags($request->input('adsoyad')),
+                'user_nickname' => strip_tags($request->input('kullanici_adi')),
+                'user_type_id' => $request->input('kullanici_tur'),
+                'user_status_id' => $request->input('kullanici_durum'),
                 'updated_at' => now(),
             ];
 
-            DB::table('content')->updateOrInsert(
-                ['content_id' => 1],
-                $data
-            );
+            if ($request->filled('sifre')) {
+                $data['user_password'] = bcrypt($request->input('sifre'));
+            }
 
-            return redirect()->back()->with('success', 'İçerik başarıyla güncellendi.');
+            if ($request->hasFile('kullanici_foto')) {
+                $file = $request->file('kullanici_foto');
+                $fileName = time().'_'.$file->getClientOriginalName();
+
+                $file->move(public_path('uploads/users'), $fileName);
+
+                $data['user_avatar'] = 'uploads/users/'.$fileName;
+            }
+
+            DB::table('users')
+                ->where('user_id', $userId)
+                ->update($data);
+
+            return redirect()->back()->with('success', 'Kullanıcı bilgileri başarıyla güncellendi!');
 
         } catch (Exception $e) {
             Log::error('Güncelleme hatası: '.$e->getMessage());
@@ -61,7 +154,31 @@ class UsersController extends Controller
         }
     }
 
-    public function deleteUser(){
+    public function deleteUser($id)
+    {
+        try {
+            $user = DB::table('users')->where('user_id', $id)->first();
 
+            if (! $user) {
+                return redirect()->back()->with('error', 'Kullanıcı veritabanında bulunamadı.');
+            }
+
+            if (! empty($user->user_photo)) {
+                $fotoYolu = public_path('uploads/users/'.$user->user_photo);
+
+                if (file_exists($fotoYolu)) {
+                    unlink($fotoYolu);
+                }
+            }
+
+            DB::table('users')->where('user_id', $id)->delete();
+
+            return redirect()->back()->with('success', 'Kullanıcı ve profil fotoğrafı başarıyla silindi.');
+
+        } catch (Exception $e) {
+            Log::error('Silme hatası: '.$e->getMessage());
+
+            return redirect()->back()->with('error', 'Silme işlemi başarısız oldu: '.$e->getMessage());
+        }
     }
 }

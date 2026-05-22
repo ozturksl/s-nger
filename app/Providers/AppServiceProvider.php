@@ -3,16 +3,15 @@
 namespace App\Providers;
 
 use App\Models\ContentModel;
+use App\Models\UserTypeModel;
+use App\Models\UserStatusModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register(): void
-    {
-        
-    }
+    public function register(): void {}
 
     public function boot(): void
     {
@@ -36,5 +35,17 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('seoData', $seoData);
         });
+
+        View::composer(['lpanel.front.useradd', 'lpanel.front.userupdate', 'lpanel.front.usersetting'], function ($view) {
+            $userType = UserTypeModel::select('usertype_name','usertype_id')->get();
+            $view->with('usertype', $userType);
+        });
+
+        View::composer(['lpanel.front.useradd', 'lpanel.front.userupdate'], function ($view) {
+            $userStatus = UserStatusModel::select('user_status_name', 'user_status_id')->get();
+            $view->with('userstatus', $userStatus);
+        });
+
+        
     }
 }

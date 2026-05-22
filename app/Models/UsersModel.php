@@ -38,6 +38,6 @@ class UsersModel extends Authenticatable
 
     public function status()
     {
-        return $this->belongsTo(UserStatusModel::class, 'user_status_id', 'userstatus_id');
+        return $this->belongsTo(UserStatusModel::class, 'user_status_id', 'user_status_id');
     }
 }

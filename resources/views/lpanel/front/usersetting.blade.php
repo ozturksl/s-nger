@@ -45,28 +45,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>slhozturk26</td>
-                                            <td>Salih Öztürk</td>
-                                            <td>Yönetici</td>
-                                            <td><span class="badge bg-danger">Aktif Değil</span></td>
-                                            <td>
-                                                <a href="{{ route('updateuser') }}" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>hayriozturk74</td>
-                                            <td>Hayri Öztürk</td>
-                                            <td>Kullanıcı</td>
-                                            <td><span class="badge bg-success">Aktif</span></td>
-                                            <td>
-                                                <a href="{{ route('deleteuser') }}" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($users as $user)
+                                            <tr>
+                                                <td>{{ $user->user_nickname }}</td>
+                                                <td>{{ $user->user_name }}</td>
+                                                <td>{{ $user->tur_adi }}</td>
+                                                <td>
+                                                    @if ($user->durum_adi == 'Aktif' || $user->durum_adi == 'Etkin')
+                                                        <span class="badge bg-success">{{ $user->durum_adi }}</span>
+                                                    @else
+                                                        <span class="badge bg-danger">{{ $user->durum_adi }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('updateuser', $user->user_id) }}" class="me-2"
+                                                        title="Düzenle"><i class="bi bi-pencil text-success"></i></a>
+                                                    <a href="{{ route('deleteuser', $user->user_id) }}"
+                                                        onclick="return confirm('Bu kullanıcıyı silmek istediğinize emin misiniz?')"
+                                                        title="Sil"><i class="bi bi-trash text-danger"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

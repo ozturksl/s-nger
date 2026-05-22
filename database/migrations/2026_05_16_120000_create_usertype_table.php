@@ -5,14 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-
 return new class extends Migration
 {
     public function up(): void
     {
         Schema::create('usertype', function (Blueprint $table) {
             $table->id('usertype_id');
-            $table->string('usertype_name',60);
+            $table->string('usertype_name', 60);
             $table->timestamps();
         });
 
@@ -20,5 +19,10 @@ return new class extends Migration
             ['usertype_name' => 'Yönetici'],
             ['usertype_name' => 'Kullanıcı'],
         ]);
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('usertype');
     }
 };

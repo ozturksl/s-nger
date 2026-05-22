@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
+@if(session('error'))
+    <div class="alert alert-danger mx-4 mt-3">{{ session('error') }}</div>
+@endif
+@if(session('success'))
+    <div class="alert alert-success mx-4 mt-3">{{ session('success') }}</div>
+@endif
+@if($errors->any())
+    <div class="alert alert-danger mx-4 mt-3">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
@@ -29,7 +45,7 @@
                         </h2>
                     </div>
 
-                    <form action="{{ route('newuser') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('addeduser') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="p-3 p-md-4">
@@ -52,22 +68,20 @@
                                 <label for="kullanici_tur" class="form-label fw-bold">
                                     KULLANICI TÜRÜ
                                 </label>
-                                <select name="kullanici_tur" id="kullanici_tur" class="form-control">
-                                    
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">İzmir</option>
+                                <select name="user_type_id" class="form-control">
+                                    @foreach($usertype as $type)
+                                    <option value="{{ $type->usertype_id }}">{{ $type->usertype_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
                                 <label for="kullanici_durum" class="form-label fw-bold">
                                     DURUM
                                 </label>
-                                <select name="kullanici_durum" id="kullanici_durum" class="form-control">
-                                    
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">İzmir</option>
+                                <select name="user_status_id" class="form-control">
+                                    @foreach($userstatus as $status)
+                                    <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">

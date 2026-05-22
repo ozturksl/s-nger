@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
@@ -29,16 +57,16 @@
                         </h2>
                     </div>
 
-                    <form action="{{ route('updateuser') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('updateduser', $user->user_id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
+                        <input type="hidden" name="user_id" value="{{ $user->user_id }}">
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
                                 <label for="adsoyad" class="form-label fw-bold">
                                     AD - SOYAD
                                 </label>
                                 <input type="text" id="adsoyad" name="adsoyad" class="form-control custom-border w-100"
-                                    placeholder="Kullanıcı adı giriniz." value="">
+                                    placeholder="Ad - Soyad giriniz." value="{{ $user->user_name }}">
                             </div>
                             <div class="mb-4">
                                 <label for="kullanici_adi" class="form-label fw-bold">
@@ -46,17 +74,16 @@
                                 </label>
                                 <input type="text" id="kullanici_adi" name="kullanici_adi"
                                     class="form-control custom-border w-100" placeholder="Kullanıcı adı giriniz."
-                                    value="">
+                                    value="{{ $user->user_nickname }}">
                             </div>
                             <div class="mb-4">
                                 <label for="kullanici_tur" class="form-label fw-bold">
                                     KULLANICI TÜRÜ
                                 </label>
                                 <select name="kullanici_tur" id="kullanici_tur" class="form-control">
-                                    
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">İzmir</option>
+                                    @foreach ($usertype as $type)
+                                        <option value="{{ $type->usertype_id }}">{{ $type->usertype_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
@@ -64,10 +91,10 @@
                                     DURUM
                                 </label>
                                 <select name="kullanici_durum" id="kullanici_durum" class="form-control">
-                                    
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="izmir">İzmir</option>
+                                    @foreach ($userstatus as $status)
+                                        <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
@@ -101,7 +128,8 @@
                                     <i class="bi bi-check-circle me-2"></i>
                                     Kullanıcı Güncelle
                                 </button>
-                                <a href="{{ route('user') }}" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
+                                <a href="{{ route('user') }}"
+                                    class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
                                     <i class="bi bi-x-circle me-2"></i>
                                     İptal
                                 </a>
