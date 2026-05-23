@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Kullanıcı Yönetimi
+    Kategori Yönetimi
 @endsection
 
 @section('css')
@@ -33,13 +33,13 @@
                 <div
                     class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
                     <div class="min-w-0">
-                        <h1 class="fs-2 fw-bold text-wrap mb-1">Kullanıcı Yönetimi</h1>
-                        <p class="text-muted mb-0 text-wrap">Kullanıcı yönetiminin sağlandığı sayfa</p>
+                        <h1 class="fs-2 fw-bold text-wrap mb-1">Kategori Yönetimi</h1>
+                        <p class="text-muted mb-0 text-wrap">Kategori yönetiminin sağlandığı sayfa</p>
                     </div>
                     <div class="w-100 w-sm-auto">
-                        <a href="{{ route('newuser') }}"
+                        <a href="{{ route('newcategory') }}"
                             class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold d-inline-flex align-items-center justify-content-center text-nowrap">
-                            YENI KULLANICI EKLE
+                            YENI KATEGORİ EKLE
                         </a>
                     </div>
                 </div>
@@ -51,30 +51,19 @@
                                 <table class="table table-hover mb-0 text-nowrap">
                                     <thead>
                                         <tr class="custom-border-bottom">
-                                            <th>Kullanıcı Adı</th>
-                                            <th>Ad-Soyad</th>
-                                            <th>Kullanıcı Türü</th>
-                                            <th>Durum</th>
+                                            <th>Kategori Adı</th>
                                             <th>Eylem</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($users as $user)
+                                        @forelse ($categories as $category)
                                             <tr>
-                                                <td>{{ $user->user_nickname }}</td>
-                                                <td>{{ $user->user_name }}</td>
-                                                <td>{{ $user->tur_adi }}</td>
+                                                <td>{{ $category->category_name }}</td>
                                                 <td>
-                                                    @if ($user->durum_adi == 'Aktif' || $user->durum_adi == 'Etkin')
-                                                        <span class="badge bg-success">{{ $user->durum_adi }}</span>
-                                                    @else
-                                                        <span class="badge bg-danger">{{ $user->durum_adi }}</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('updateuser', $user->user_id) }}" class="me-2"
-                                                        title="Düzenle"><i class="bi bi-pencil text-success"></i></a>
-                                                    <a href="{{ route('deleteuser', $user->user_id) }}">
+                                                    <a href="{{ route('updatecategory', $category->category_id) }}"
+                                                        class="me-2" title="Düzenle"><i
+                                                            class="bi bi-pencil text-success"></i></a>
+                                                    <a href="{{ route('deletecategory', $category->category_id) }}">
                                                         <i class="bi bi-trash text-danger"></i>
                                                     </a>
                                                 </td>
@@ -82,8 +71,8 @@
                                         @empty
                                             <tr>
                                                 <td colspan="5" class="text-center text-muted py-4">
-                                                    <i class="bi bi-people me-2"></i> Sistemde kayıtlı herhangi bir
-                                                    kullanıcı bulunamadı.
+                                                    <i class="bi bi-grid me-2"></i> Sistemde kayıtlı herhangi bir
+                                                    kategori bulunamadı.
                                                 </td>
                                             </tr>
                                         @endforelse

@@ -8,29 +8,31 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
-@if ($errors->any())
-    <div
-        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-        <strong style="display: block; margin-bottom: 5px;">Lütfen aşağıdaki hataları düzeltiniz:</strong>
-        <ul style="margin: 0; padding-left: 20px;">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
     </div>
 @endif
 
 @if (session('error'))
-    <div
-        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-        <strong>Hata:</strong> {{ session('error') }}
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
     </div>
 @endif
 
-@if (session('success'))
-    <div
-        style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
-        <strong>Başarılı!</strong> {{ session('success') }}
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
 @endif
 
@@ -73,11 +75,12 @@
                             </div>
 
                             <div class="mb-4">
-                                <img src="{{ asset('storage/seo/' . $seoData->seo_favicon) }}" width="150" height="auto" alt="">
+                                <img src="{{ asset('storage/seo/' . $seoData->seo_favicon) }}" width="150" height="auto"
+                                    alt="">
                                 <label for="seofavicon" class="form-label fw-bold">
                                     FAVİCON
                                 </label>
-                                <input class="form-control w-100" type="file" name="seofavicon"
+                                <input class="form-control custom-border w-100" type="file" name="seofavicon"
                                     accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>
@@ -86,11 +89,12 @@
                             </div>
 
                             <div class="mb-4">
-                                <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" width="150" height="auto" alt="">
+                                <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" width="150" height="auto"
+                                    alt="">
                                 <label for="seoicon" class="form-label fw-bold">
                                     LOGO
                                 </label>
-                                <input class="form-control w-100" type="file" name="seoicon"
+                                <input class="form-control custom-border w-100" type="file" name="seoicon"
                                     accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>

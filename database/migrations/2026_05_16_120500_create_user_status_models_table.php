@@ -12,7 +12,6 @@ return new class extends Migration
         Schema::create('user_status_models', function (Blueprint $table) {
             $table->id('user_status_id');
             $table->string('user_status_name');
-            $table->timestamps();
         });
 
         DB::table('user_status_models')->insert([

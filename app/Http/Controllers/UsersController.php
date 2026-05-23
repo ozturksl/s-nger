@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -19,6 +20,7 @@ class UsersController extends Controller
             'sifre_tekrar' => 'required|same:sifre',
             'user_type_id' => 'required|exists:usertype,usertype_id',
             'user_status_id' => 'required|exists:user_status_models,user_status_id',
+            'kullanici_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
         ], [
             'adsoyad.required' => 'Ad Soyad alanı boş bırakılamaz.',
             'kullanici_adi.required' => 'Kullanıcı Adı alanı boş bırakılamaz.',
@@ -26,19 +28,19 @@ class UsersController extends Controller
             'sifre_tekrar.required' => 'Şifre Tekrar alanı boş bırakılamaz.',
             'user_type_id.required' => 'Kullanıcı Türü seçimi boş bırakılamaz.',
             'user_status_id.required' => 'Kullanıcı Durumu seçimi boş bırakılamaz.',
-
             'max' => 'Girilen değer çok uzun.',
             'same' => 'Girdiğiniz şifreler birbiriyle eşleşmiyor.',
             'unique' => 'Bu kullanıcı adı zaten alınmış.',
             'exists' => 'Geçersiz bir seçim yaptınız.',
+            'mimes' => 'Dosya izin verilen türde değil.',
         ]);
 
         try {
             $fotoAdi = null;
             if ($request->hasFile('kullanici_foto')) {
                 $file = $request->file('kullanici_foto');
-                $fotoAdi = time().'_'.$file->getClientOriginalName();
-                $file->move(public_path('uploads/users'), $fotoAdi);
+                $fotoAdi = 'user_'.time().'.'.$file->getClientOriginalExtension();
+                $file->storeAs('user', $fotoAdi, 'public');
             }
 
             UsersModel::create([
@@ -53,11 +55,11 @@ class UsersController extends Controller
             return redirect()->route('user')->with('success', 'Kullanıcı başarıyla eklendi.');
 
         } catch (Exception $e) {
-            \Log::error('Kullanıcı ekleme hatası: '.$e->getMessage());
+            Log::error('Kullanıcı ekleme hatası: '.$e->getMessage());
 
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Kullanıcı eklenirken bir hata oluştu: '.$e->getMessage());
+                ->with('error', 'Kullanıcı eklenirken bir hata oluştu.');
         }
     }
 
@@ -94,25 +96,26 @@ class UsersController extends Controller
         return view('lpanel.front.userupdate', compact('user'));
     }
 
-    public function updateUserAction(Request $request)
+    public function updateUserAction(Request $request, $id)
     {
-         $request->validate([
+        $request->validate([
             'adsoyad' => 'string|max:25',
-            'kullanici_adi' => 'string|max:50|unique:users,user_nickname',
-            'sifre' => 'string|min:4|max:22',
+            'kullanici_adi' => 'string|max:50|unique:users,user_nickname,'.$id.',user_id',
+            'sifre' => 'nullable|string|min:4|max:22',
             'sifre_tekrar' => 'same:sifre',
             'user_type_id' => 'exists:usertype,usertype_id',
             'user_status_id' => 'exists:user_status_models,user_status_id',
+            'kullanici_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
         ], [
             'max' => 'Girilen değer çok uzun.',
             'same' => 'Girdiğiniz şifreler birbiriyle eşleşmiyor.',
             'unique' => 'Bu kullanıcı adı zaten alınmış.',
             'exists' => 'Geçersiz bir seçim yaptınız.',
+            'mimes' => 'Dosya izin verilen türde değil.',
         ]);
 
         try {
-            $userId = $request->input('user_id');
-            $currentContent = DB::table('users')->where('user_id', $userId)->first();
+            $currentContent = DB::table('users')->where('user_id', $id)->first();
 
             if (! $currentContent) {
                 return redirect()->back()->with('error', 'Güncellenecek kullanıcı bulunamadı.');
@@ -121,8 +124,9 @@ class UsersController extends Controller
             $data = [
                 'user_name' => strip_tags($request->input('adsoyad')),
                 'user_nickname' => strip_tags($request->input('kullanici_adi')),
-                'user_type_id' => $request->input('kullanici_tur'),
-                'user_status_id' => $request->input('kullanici_durum'),
+                'user_type_id' => $request->input('user_type_id') ?? $currentContent->user_type_id,
+                'user_status_id' => $request->input('user_status_id') ?? $currentContent->user_status_id,
+
                 'updated_at' => now(),
             ];
 
@@ -131,16 +135,21 @@ class UsersController extends Controller
             }
 
             if ($request->hasFile('kullanici_foto')) {
+                if ($currentContent && $currentContent->user_photo) {
+                    Storage::disk('public')->delete('user/'.$currentContent->user_photo);
+                }
+
                 $file = $request->file('kullanici_foto');
-                $fileName = time().'_'.$file->getClientOriginalName();
+                $fileName = 'user_'.time().'.'.$file->getClientOriginalExtension();
+                $file->storeAs('user', $fileName, 'public');
 
-                $file->move(public_path('uploads/users'), $fileName);
-
-                $data['user_avatar'] = 'uploads/users/'.$fileName;
+                $data['user_photo'] = $fileName;
+            } else {
+                $data['user_photo'] = $currentContent->user_photo ?? null;
             }
 
             DB::table('users')
-                ->where('user_id', $userId)
+                ->where('user_id', $id)
                 ->update($data);
 
             return redirect()->back()->with('success', 'Kullanıcı bilgileri başarıyla güncellendi!');
@@ -164,11 +173,7 @@ class UsersController extends Controller
             }
 
             if (! empty($user->user_photo)) {
-                $fotoYolu = public_path('uploads/users/'.$user->user_photo);
-
-                if (file_exists($fotoYolu)) {
-                    unlink($fotoYolu);
-                }
+                Storage::disk('public')->delete('user/'.$user->user_photo);
             }
 
             DB::table('users')->where('user_id', $id)->delete();
@@ -178,7 +183,7 @@ class UsersController extends Controller
         } catch (Exception $e) {
             Log::error('Silme hatası: '.$e->getMessage());
 
-            return redirect()->back()->with('error', 'Silme işlemi başarısız oldu: '.$e->getMessage());
+            return redirect()->back()->with('error', 'Silme işlemi başarısız oldu.');
         }
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\ContentModel;
-use App\Models\UserTypeModel;
+use App\Models\ProductCategoriesModel;
+use App\Models\UsersModel;
 use App\Models\UserStatusModel;
+use App\Models\UserTypeModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -37,7 +39,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer(['lpanel.front.useradd', 'lpanel.front.userupdate', 'lpanel.front.usersetting'], function ($view) {
-            $userType = UserTypeModel::select('usertype_name','usertype_id')->get();
+            $userId = request()->route('id');
+            $user = UsersModel::where('user_id', $userId)->first();
+            $view->with('user', $user);
+        });
+
+        View::composer(['lpanel.front.useradd', 'lpanel.front.userupdate'], function ($view) {
+            $userType = UserTypeModel::select('usertype_name', 'usertype_id')->get();
             $view->with('usertype', $userType);
         });
 
@@ -46,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('userstatus', $userStatus);
         });
 
-        
+        View::composer(['lpanel.front.categorysetting', 'lpanel.front.categoryupdate', 'lpanel.front.categoryadd'], function ($view) {
+            $categories = ProductCategoriesModel::select('category_name', 'category_id')->get();
+            $view->with('categories', $categories);
+        });
+
     }
 }

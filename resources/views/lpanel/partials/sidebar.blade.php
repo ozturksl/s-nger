@@ -17,6 +17,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('category') }}" class="nav-link">
+                <i class="bi bi-grid fs-4 fw-bold me-2"></i> Kategori Yönetimi
+            </a>
+        </li>
+        <li>
             <a href="{{ route('content') }}" class="nav-link">
                 <i class="bi bi-file-earmark-text fs-4 fw-bold me-2"></i> İçerik Yönetimi
             </a>
@@ -62,6 +67,11 @@
         <li>
             <a href="{{ route('products') }}" class="nav-link py-3 border-bottom rounded-0" title="Ürün Yönetimi">
                 <i class="bi bi-cart fs-4"></i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('category') }}" class="nav-link py-3 border-bottom rounded-0" title="Kategori Yönetimi">
+                <i class="bi bi-grid fs-4"></i>
             </a>
         </li>
         <li>

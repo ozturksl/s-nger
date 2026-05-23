@@ -25,12 +25,12 @@
                     <form action="" class="px-2 px-sm-3 border-danger border-bottom border-1 pb-4">
                         <div class="pb-3">
                             <label class="fw-bold mb-2" for="username">KULLANICI ADI</label>
-                            <input id="username" class="p-3 w-100 border-danger form-control rounded-3" type="text"
+                            <input name="username" class="p-3 w-100 border-danger form-control rounded-3" type="text"
                                 placeholder="Kullanıcı adınızı girin">
                         </div>
                         <div class="pb-4">
                             <label class="fw-bold mb-2" for="password">ŞİFRE</label>
-                            <input id="password" class="p-3 w-100 border-danger form-control rounded-3" type="password"
+                            <input name="password" class="p-3 w-100 border-danger form-control rounded-3" type="password"
                                 placeholder="Şifrenizi girin">
                         </div>
                         <button class="btn btn-danger w-100 rounded-3 py-3 text-white fw-bold" type="submit">

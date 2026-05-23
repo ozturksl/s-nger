@@ -8,16 +8,28 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
-@if(session('error'))
-    <div class="alert alert-danger mx-4 mt-3">{{ session('error') }}</div>
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+    </div>
 @endif
-@if(session('success'))
-    <div class="alert alert-success mx-4 mt-3">{{ session('success') }}</div>
+
+@if (session('error'))
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+    </div>
 @endif
-@if($errors->any())
-    <div class="alert alert-danger mx-4 mt-3">
-        <ul class="mb-0">
-            @foreach($errors->all() as $error)
+
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
@@ -50,17 +62,17 @@
 
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
-                                <label for="adsoyad" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     AD - SOYAD
                                 </label>
-                                <input type="text" id="adsoyad" name="adsoyad" class="form-control custom-border w-100"
+                                <input type="text" name="adsoyad" class="form-control custom-border w-100"
                                     placeholder="Kullanıcı adı giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_adi" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     KULLANICI ADI
                                 </label>
-                                <input type="text" id="kullanici_adi" name="kullanici_adi"
+                                <input type="text" name="kullanici_adi"
                                     class="form-control custom-border w-100" placeholder="Kullanıcı adı giriniz."
                                     value="">
                             </div>
@@ -68,9 +80,9 @@
                                 <label for="kullanici_tur" class="form-label fw-bold">
                                     KULLANICI TÜRÜ
                                 </label>
-                                <select name="user_type_id" class="form-control">
-                                    @foreach($usertype as $type)
-                                    <option value="{{ $type->usertype_id }}">{{ $type->usertype_name }}</option>
+                                <select name="user_type_id" class="form-control custom-border">
+                                    @foreach ($usertype as $type)
+                                        <option value="{{ $type->usertype_id }}">{{ $type->usertype_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -78,32 +90,40 @@
                                 <label for="kullanici_durum" class="form-label fw-bold">
                                     DURUM
                                 </label>
-                                <select name="user_status_id" class="form-control">
-                                    @foreach($userstatus as $status)
-                                    <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}</option>
+                                <select name="user_status_id" class="form-control custom-border">
+                                    @foreach ($userstatus as $status)
+                                        <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="sifre" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ŞİFRE
                                 </label>
-                                <input type="password" id="sifre" name="sifre"
+                                <input type="password" name="sifre"
                                     class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="sifre_tekrar" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ŞİFRE TEKRAR
                                 </label>
-                                <input type="password" id="sifre_tekrar" name="sifre_tekrar"
+                                <input type="password" name="sifre_tekrar"
                                     class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_foto" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     KULLANICI FOTOĞRAFI
+                                @if($user)
+                                    <img
+                                        src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
+                                        height="auto" alt="">
+                                @else
+                                    <p>Kullanıcı bulunamadı veya ID geçersiz.</p>
+                                @endif
                                 </label>
-                                <input class="form-control w-100" type="file" id="kullanici_foto" name="kullanici_foto"
-                                    accept="image/jpeg,image/png,image/webp">
+                                <input class="form-control w-100 custom-border" type="file"
+                                    name="kullanici_foto" accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>
                                     Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
@@ -115,7 +135,8 @@
                                     <i class="bi bi-check-circle me-2"></i>
                                     Kullanıcı Ekle
                                 </button>
-                                <a href="{{ route('user') }}" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
+                                <a href="{{ route('user') }}"
+                                    class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
                                     <i class="bi bi-x-circle me-2"></i>
                                     İptal
                                 </a>

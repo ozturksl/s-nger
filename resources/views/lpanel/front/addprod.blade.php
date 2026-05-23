@@ -34,27 +34,27 @@
 
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
-                                <label for="urun_adi" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ÜRÜN ADI
                                 </label>
-                                <input type="text" id="urun_adi" name="urun_adi"
+                                <input type="text" name="urun_adi"
                                     class="form-control custom-border w-100" placeholder="Ürün adını giriniz"
                                     value="">
                             </div>
                             <div class="mb-4">
-                                <label for="urun_aciklama" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ÜRÜN AÇIKLAMASI
                                 </label>
-                                <textarea id="urun_aciklama" name="urun_aciklama" class="form-control custom-border w-100"
+                                <textarea name="urun_aciklama" class="form-control custom-border w-100"
                                     placeholder="Ürün açıklamasını giriniz" rows="4"></textarea>
                             </div>
 
                             <div class="mb-4">
-                                <label for="urun_fiyat" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ÜRÜN FİYATI
                                 </label>
                                 <div class="input-group flex-nowrap">
-                                    <input type="number" id="urun_fiyat" name="urun_fiyat"
+                                    <input type="number" name="urun_fiyat"
                                         class="form-control custom-border" placeholder="0.00" value="" step="0.01"
                                         min="0">
                                     <span class="input-group-text">₺</span>
@@ -62,18 +62,18 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="urun_ozellikler" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ÜRÜN ÖZELLİKLERİ
                                 </label>
-                                <textarea id="urun_ozellikler" name="urun_ozellikler" class="form-control custom-border w-100"
+                                <textarea name="urun_ozellikler" class="form-control custom-border w-100"
                                     placeholder="Ürün özelliklerini giriniz (her özellik yeni satırda)" rows="5"></textarea>
                             </div>
 
                             <div class="mb-4">
-                                <label for="urun_foto" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ÜRÜN FOTOĞRAFI
                                 </label>
-                                <input class="form-control w-100" type="file" id="urun_foto" name="urun_foto"
+                                <input class="form-control w-100 custom-border" type="file" name="urun_foto"
                                     accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>

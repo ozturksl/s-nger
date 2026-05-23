@@ -12,7 +12,6 @@ return new class extends Migration
         Schema::create('usertype', function (Blueprint $table) {
             $table->id('usertype_id');
             $table->string('usertype_name', 60);
-            $table->timestamps();
         });
 
         DB::table('usertype')->insert([

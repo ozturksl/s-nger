@@ -62,35 +62,35 @@
                         <input type="hidden" name="user_id" value="{{ $user->user_id }}">
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
-                                <label for="adsoyad" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     AD - SOYAD
                                 </label>
-                                <input type="text" id="adsoyad" name="adsoyad" class="form-control custom-border w-100"
+                                <input type="text" name="adsoyad" class="form-control custom-border w-100"
                                     placeholder="Ad - Soyad giriniz." value="{{ $user->user_name }}">
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_adi" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     KULLANICI ADI
                                 </label>
-                                <input type="text" id="kullanici_adi" name="kullanici_adi"
+                                <input type="text" name="kullanici_adi"
                                     class="form-control custom-border w-100" placeholder="Kullanıcı adı giriniz."
                                     value="{{ $user->user_nickname }}">
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_tur" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     KULLANICI TÜRÜ
                                 </label>
-                                <select name="kullanici_tur" id="kullanici_tur" class="form-control">
+                                <select name="kullanici_tur" class="form-control custom-border">
                                     @foreach ($usertype as $type)
                                         <option value="{{ $type->usertype_id }}">{{ $type->usertype_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_durum" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     DURUM
                                 </label>
-                                <select name="kullanici_durum" id="kullanici_durum" class="form-control">
+                                <select name="kullanici_durum" class="form-control custom-border">
                                     @foreach ($userstatus as $status)
                                         <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}
                                         </option>
@@ -98,25 +98,31 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="sifre" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ŞİFRE
                                 </label>
-                                <input type="password" id="sifre" name="sifre"
+                                <input type="password" name="sifre"
                                     class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="sifre_tekrar" class="form-label fw-bold">
+                                <label class="form-label fw-bold">
                                     ŞİFRE TEKRAR
                                 </label>
-                                <input type="password" id="sifre_tekrar" name="sifre_tekrar"
+                                <input type="password" name="sifre_tekrar"
                                     class="form-control custom-border w-100" placeholder="Şifre giriniz." value="">
                             </div>
                             <div class="mb-4">
-                                <label for="kullanici_foto" class="form-label fw-bold">
+                                @if ($user)
+                                    <img src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
+                                        height="auto" alt="">
+                                @else
+                                    <p>Kullanıcı bulunamadı veya ID geçersiz.</p>
+                                @endif
+                                <label class="form-label fw-bold">
                                     KULLANICI FOTOĞRAFI
                                 </label>
-                                <input class="form-control w-100" type="file" id="kullanici_foto" name="kullanici_foto"
-                                    accept="image/jpeg,image/png,image/webp">
+                                <input class="form-control w-100 custom-border" type="file"
+                                    name="kullanici_foto" accept="image/jpeg,image/png,image/webp">
                                 <div class="form-text text-muted text-wrap">
                                     <i class="bi bi-info-circle me-1"></i>
                                     Maksimum dosya boyutu: 2MB. Desteklenen formatlar: JPG, PNG, WEBP.
