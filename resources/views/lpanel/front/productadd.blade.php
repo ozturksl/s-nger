@@ -48,7 +48,17 @@
                                 <textarea name="urun_aciklama" class="form-control custom-border w-100"
                                     placeholder="Ürün açıklamasını giriniz" rows="4"></textarea>
                             </div>
-
+                             <div class="mb-4">
+                                <label for="urun_kategori" class="form-label fw-bold">
+                                    DURUM
+                                </label>
+                                <select name="category_id" class="form-control custom-border">
+                                    @foreach ($userstatus as $status)
+                                        <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">
                                     ÜRÜN FİYATI

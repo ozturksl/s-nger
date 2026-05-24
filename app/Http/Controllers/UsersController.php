@@ -115,17 +115,17 @@ class UsersController extends Controller
         ]);
 
         try {
-            $currentContent = DB::table('users')->where('user_id', $id)->first();
+            $currentUser = DB::table('users')->where('user_id', $id)->first();
 
-            if (! $currentContent) {
+            if (! $currentUser) {
                 return redirect()->back()->with('error', 'Güncellenecek kullanıcı bulunamadı.');
             }
 
             $data = [
                 'user_name' => strip_tags($request->input('adsoyad')),
                 'user_nickname' => strip_tags($request->input('kullanici_adi')),
-                'user_type_id' => $request->input('user_type_id') ?? $currentContent->user_type_id,
-                'user_status_id' => $request->input('user_status_id') ?? $currentContent->user_status_id,
+                'user_type_id' => $request->input('user_type_id') ?? $currentUser->user_type_id,
+                'user_status_id' => $request->input('user_status_id') ?? $currentUser->user_status_id,
 
                 'updated_at' => now(),
             ];
@@ -135,8 +135,8 @@ class UsersController extends Controller
             }
 
             if ($request->hasFile('kullanici_foto')) {
-                if ($currentContent && $currentContent->user_photo) {
-                    Storage::disk('public')->delete('user/'.$currentContent->user_photo);
+                if ($currentUser && $currentUser->user_photo) {
+                    Storage::disk('public')->delete('user/'.$currentUser->user_photo);
                 }
 
                 $file = $request->file('kullanici_foto');
@@ -145,7 +145,7 @@ class UsersController extends Controller
 
                 $data['user_photo'] = $fileName;
             } else {
-                $data['user_photo'] = $currentContent->user_photo ?? null;
+                $data['user_photo'] = $currentUser->user_photo ?? null;
             }
 
             DB::table('users')

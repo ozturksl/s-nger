@@ -58,9 +58,9 @@ class ProdCategoriesController extends Controller
     public function updateCategoryAction(Request $request, $id)
     {
         try {
-            $currentContent = DB::table('prodcategories');
+            $currentCategories = DB::table('prodcategories');
 
-            if (! $currentContent) {
+            if (! $currentCategories) {
                 return redirect()->back()->with('error', 'Güncellenecek kategori bulunamadı');
             }
 
