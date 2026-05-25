@@ -65,7 +65,7 @@
                                                 <td>{{ $user->user_name }}</td>
                                                 <td>{{ $user->tur_adi }}</td>
                                                 <td>
-                                                    @if ($user->durum_adi == 'Aktif' || $user->durum_adi == 'Etkin')
+                                                    @if ($user->durum_adi == 'Etkin')
                                                         <span class="badge bg-success">{{ $user->durum_adi }}</span>
                                                     @else
                                                         <span class="badge bg-danger">{{ $user->durum_adi }}</span>

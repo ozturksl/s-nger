@@ -22,19 +22,6 @@
     </div>
 @endif
 
-@if ($errors->any())
-    <div class="alert alert-danger mb-4" role="alert">
-        <div class="fw-bold mb-2">
-            <i class="bi bi-x-circle-fill me-2"></i>
-            Lütfen formdaki hataları düzeltiniz:
-        </div>
-        <ul class="mb-0 ps-3">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
 @section('content')
     <div class="d-flex flex-row min-vh-100">

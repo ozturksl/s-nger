@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
@@ -29,7 +57,7 @@
                         </h2>
                     </div>
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('addedproduct') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="p-3 p-md-4">
@@ -50,11 +78,22 @@
                             </div>
                              <div class="mb-4">
                                 <label for="urun_kategori" class="form-label fw-bold">
-                                    DURUM
+                                    KATEGORİ
                                 </label>
                                 <select name="category_id" class="form-control custom-border">
-                                    @foreach ($userstatus as $status)
-                                        <option value="{{ $status->user_status_id }}">{{ $status->user_status_name }}
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->category_id }}">{{ $category->category_name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                             <div class="mb-4">
+                                <label for="urun_durum" class="form-label fw-bold">
+                                    DURUM
+                                </label>
+                                <select name="product_status_id" class="form-control custom-border">
+                                    @foreach ($productstatus as $status)
+                                        <option value="{{ $status->product_status_id }}">{{ $status->product_status_name}}
                                         </option>
                                     @endforeach
                                 </select>

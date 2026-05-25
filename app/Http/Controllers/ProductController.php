@@ -14,10 +14,11 @@ class ProductController extends Controller
         $request->validate([
             'urun_adi' => 'required|string',
             'urun_aciklama' => 'required|string',
-            'urun_fiyat' => 'required|integer|max:7',
-            'urun_ozellikler' => 'required|integer',
+            'urun_fiyat' => 'required|integer',
+            'urun_ozellikler' => 'required|string',
             'urun_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
             'category_id' => 'required|exists:prodcategories,category_id',
+            'product_status_id' => 'required|exists:product_status,product_status_id',
         ],
 
             [
@@ -28,6 +29,7 @@ class ProductController extends Controller
                 'max' => 'Girilen değer çok uzun.',
                 'mimes' => 'Dosya izin verilen türde değil.',
                 'category_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
+                'product_status_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
 
             ]
         );
@@ -44,9 +46,10 @@ class ProductController extends Controller
                 'product_name' => $request->input('urun_adi'),
                 'product_price' => $request->input('urun_fiyat'),
                 'product_comment' => $request->input('urun_aciklama'),
-                'user_photo' => $fotoAdi,
+                'product_photo' => $fotoAdi,
                 'product_feature' => $request->input('urun_ozellikler'),
                 'category_id' => $request->input('category_id'),
+                'product_status_id' => $request->input('product_status_id'),
             ]);
 
             return redirect()->route('products')->with('success', 'Ürün başarıyla eklendi.');
@@ -66,9 +69,11 @@ class ProductController extends Controller
         try {
             $product = DB::table('product')
                 ->join('prodcategories', 'product.category_id', '=', 'prodcategories.category_id')
+                ->join('product_status', 'product.status_id', '=', 'product_status.product_status_id')
                 ->select(
                     'product.*',
-                    'prodcategories.category_name as kateogri_adi',
+                    'prodcategories.category_name as kategori_adi',
+                    'product_status.product_status_name as urun_durumadi',
                 )
                 ->get();
 
@@ -101,6 +106,7 @@ class ProductController extends Controller
             'urun_ozellikler' => 'required|integer',
             'urun_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
             'category_id' => 'required|exists:prodcategories,category_id',
+            'product_status_id' => 'required|exists:product_status,product_status_id',
         ],
 
             [
@@ -111,6 +117,7 @@ class ProductController extends Controller
                 'max' => 'Girilen değer çok uzun.',
                 'mimes' => 'Dosya izin verilen türde değil.',
                 'category_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
+                'product_status_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
 
             ]
         );
@@ -128,6 +135,7 @@ class ProductController extends Controller
                 'product_comment' => strip_tags($request->input('urun_aciklama')),
                 'product_feature' => strip_tags($request->input('urun_ozellikler')),
                 'category_id' => $request->input('category_id') ?? $currentProduct->category_id,
+                'product_status_id' => $request->input('product_status_id') ?? $currentProduct->product_status_id,
                 'updated_at' => now(),
             ];
 

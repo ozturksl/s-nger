@@ -11,9 +11,10 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->id('product_id');
             $table->string('product_name');
-            $table->string('product_price',7);
-            $table->string('product_photo',255);
+            $table->string('product_price', 7);
+            $table->string('product_photo', 255);
             $table->foreignId('category_id')->constrained('prodcategories', 'category_id')->onDelete('cascade');
+            $table->foreignId('product_status_id')->constrained('product_status', 'product_status_id')->onDelete('cascade');
             $table->text('product_comment');
             $table->text('product_feature');
             $table->timestamps();

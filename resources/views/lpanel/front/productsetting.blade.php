@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+    </div>
+@endif
+
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         @include('lpanel.partials.sidebar')
@@ -39,61 +53,27 @@
                                         <tr class="custom-border-bottom">
                                             <th>Ürün Adı</th>
                                             <th>Kategori</th>
-                                            <th>Stok</th>
                                             <th>Fiyat</th>
                                             <th>Durum</th>
                                             <th>Eylem</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>PFAFF 6693</td>
-                                            <td>Ev Tipi Dikiş Makinesi</td>
-                                            <td>12</td>
-                                            <td>250 ₺</td>
-                                            <td><span class="badge bg-danger">Aktif Değil</span></td>
-                                            <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>PFAFF 6693</td>
-                                            <td>Ev Tipi Dikiş Makinesi</td>
-                                            <td>12</td>
-                                            <td>250 ₺</td>
-                                            <td><span class="badge bg-danger">Aktif Değil</span></td>
-                                            <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>PFAFF 6693</td>
-                                            <td>Ev Tipi Dikiş Makinesi</td>
-                                            <td>12</td>
-                                            <td>250 ₺</td>
-                                            <td><span class="badge bg-success">Aktif</span></td>
-                                            <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>PFAFF 6693</td>
-                                            <td>Ev Tipi Dikiş Makinesi</td>
-                                            <td>12</td>
-                                            <td>250 ₺</td>
-                                            <td><span class="badge bg-success">Aktif</span></td>
-                                            <td>
-                                                <a href="#" class="me-2"><i
-                                                        class="bi bi-pencil text-success"></i></a>
-                                                <a href="#"><i class="bi bi-trash text-danger"></i></a>
-                                            </td>
-                                        </tr>
+                                        @forelse ($products as $item) //Tablolar bağlanacak !!
+                                            <tr>
+                                                <td>{{ $item->product_name }}</td>
+                                                <td>{{ $item->category_name }}</td>
+                                                <td>{{ $item->product_price }}₺</td>
+                                                <td><span class="badge bg-danger">Aktif Değil</span></td>
+                                                <td>
+                                                    <a href="#" class="me-2"><i
+                                                            class="bi bi-pencil text-success"></i></a>
+                                                    <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
+
                                     </tbody>
                                 </table>
                             </div>

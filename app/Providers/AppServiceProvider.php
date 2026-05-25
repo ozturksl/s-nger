@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\ContentModel;
 use App\Models\ProductCategoriesModel;
 use App\Models\ProductModel;
+use App\Models\ProductStatusModel;
 use App\Models\UsersModel;
 use App\Models\UserStatusModel;
 use App\Models\UserTypeModel;
@@ -55,14 +56,18 @@ class AppServiceProvider extends ServiceProvider
             $view->with('userstatus', $userStatus);
         });
 
-        View::composer(['lpanel.front.categorysetting', 'lpanel.front.categoryupdate', 'lpanel.front.categoryadd'], function ($view) {
+        View::composer(['lpanel.front.categorysetting', 'lpanel.front.categoryupdate', 'lpanel.front.categoryadd', 'lpanel.front.productadd'], function ($view) {
             $categories = ProductCategoriesModel::select('category_name', 'category_id')->get();
             $view->with('categories', $categories);
         });
 
-         View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
-            $categories = ProductModel::select('category_name', 'category_id')->get();
-            $view->with('categories', $categories);
+        View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
+            $view->with('products', ProductModel::all());
+        });
+
+        View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
+            $productStatus = ProductStatusModel::select('product_status_name', 'product_status_id')->get();
+            $view->with('productstatus', $productStatus);
         });
 
     }
