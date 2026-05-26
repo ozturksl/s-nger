@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Kullanıcı Düzenleme
+    Kullanıcı Düzenle
 @endsection
 
 @section('css')
@@ -46,7 +46,7 @@
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">Kullanıcı Düzenle</h1>
-                    <p class="text-muted">Kullanıcı güncellemelerinin yapıldığı bölüm</p>
+                    <p class="text-muted">Mevcut kullanıcıları düzenleyin./p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
@@ -66,7 +66,7 @@
                                     AD - SOYAD
                                 </label>
                                 <input type="text" name="adsoyad" class="form-control custom-border w-100"
-                                    placeholder="Ad - Soyad giriniz." value="{{ $user->user_name }}">
+                                    placeholder="Ad ve soyad giriniz." value="{{ $user->user_name }}">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">
@@ -116,7 +116,8 @@
                                     <img src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
                                         height="auto" alt="">
                                 @else
-                                    <p>Kullanıcı bulunamadı veya ID geçersiz.</p>
+                                    <img src="{{ asset('admin/assets/images.png') }}" width="150"
+                                        height="auto" alt="">
                                 @endif
                                 <label class="form-label fw-bold">
                                     KULLANICI FOTOĞRAFI

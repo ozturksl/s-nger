@@ -193,6 +193,10 @@
                         </div>
                     </a>
                 </div>
+                <div class="text-center pt-4 pt-lg-5">
+                <a class="others h5 px-4 py-3 d-inline-block text-decoration-none" href="{{ route('request') }}">
+                   Hizmet Talep Edin</a>
+            </div>
             </div>
         </div>
     </section>

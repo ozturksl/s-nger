@@ -34,9 +34,9 @@
                     class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
                     <div class="min-w-0">
                         <h1 class="fs-2 fw-bold text-wrap mb-1">Kategori Yönetimi</h1>
-                        <p class="text-muted mb-0 text-wrap">Kategori yönetiminin sağlandığı sayfa</p>
+                        <p class="text-muted mb-0 text-wrap">Mevcut kategorileri görüntüleyin.</p>
                     </div>
-                    <div class="w-100 w-sm-auto">
+                    <div class="w-sm-auto">
                         <a href="{{ route('newcategory') }}"
                             class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold d-inline-flex align-items-center justify-content-center text-nowrap">
                             YENI KATEGORİ EKLE

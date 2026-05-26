@@ -84,22 +84,29 @@ class ProdCategoriesController extends Controller
     }
 
     public function deleteCategory($id)
-    {
-        try {
-            $category = DB::table('prodcategories')->where('category_id', $id)->first();
+{
+    try {
+        // 1. Aşama: Kategori gerçekten var mı kontrolü
+        $category = DB::table('prodcategories')->where('category_id', $id)->first();
 
-            if (! $category) {
-                return redirect()->back()->with('error', 'Kategori veritabanında bulunamadı.');
-            }
-
-            DB::table('prodcategories')->where('category_id', $id)->delete();
-
-            return redirect()->back()->with('success', 'Kategori başarıyla silindi.');
-
-        } catch (Exception $e) {
-            Log::error('Silme hatası: '.$e->getMessage());
-
-            return redirect()->back()->with('error', 'Silme işlemi başarısız oldu.');
+        if (! $category) {
+            return redirect()->back()->with('error', 'Kategori veritabanında bulunamadı.');
         }
+
+        $hasProducts = DB::table('product')->where('category_id', $id)->exists();
+
+        if ($hasProducts) {
+            return redirect()->back()->with('error', 'Bu kategoriye kayıtlı ürünler bulunmaktadır. Önce ürünleri silmeli veya başka bir kategoriye taşımalısınız.');
+        }
+
+        DB::table('prodcategories')->where('category_id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Kategori başarıyla silindi.');
+
+    } catch (\Exception $e) {
+        \Log::error('Silme hatası: '.$e->getMessage());
+
+        return redirect()->back()->with('error', 'Silme işlemi sırasında beklenmedik bir hata oluştu.');
     }
+}
 }

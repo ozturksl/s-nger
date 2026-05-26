@@ -34,9 +34,9 @@
                     class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-4">
                     <div class="min-w-0">
                         <h1 class="fs-2 fw-bold text-wrap mb-1">Ürün Yönetimi</h1>
-                        <p class="text-muted mb-0 text-wrap">Ürün yönetiminin sağlandığı sayfa</p>
+                        <p class="text-muted mb-0 text-wrap">Mevcut ürünleri görüntüleyin.</p>
                     </div>
-                    <div class="w-100 w-sm-auto">
+                    <div class="w-sm-auto">
                         <a href="{{ route('newproducts') }}"
                             class="px-4 py-2 text-white btn btn-danger rounded-2 text-decoration-none fw-bold d-inline-flex align-items-center justify-content-center text-nowrap">
                             YENI ÜRÜN EKLE
@@ -59,21 +59,41 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($products as $item) //Tablolar bağlanacak !!
+                                        @forelse ($products as $item)
                                             <tr>
                                                 <td>{{ $item->product_name }}</td>
-                                                <td>{{ $item->category_name }}</td>
-                                                <td>{{ $item->product_price }}₺</td>
-                                                <td><span class="badge bg-danger">Aktif Değil</span></td>
                                                 <td>
-                                                    <a href="#" class="me-2"><i
-                                                            class="bi bi-pencil text-success"></i></a>
-                                                    <a href="#"><i class="bi bi-trash text-danger"></i></a>
+                                                    @if ($item->kategori_adi)
+                                                        <span class="text-dark">{{ $item->kategori_adi }}</span>
+                                                    @else
+                                                        <span class="badge bg-secondary text-wrap">Kategori Yok</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $item->product_price }}₺</td>
+                                                <td>
+
+
+                                                    @if ($item->urun_durumadi == 'Etkin')
+                                                        <span class="badge bg-success">{{ $item->urun_durumadi }}</span>
+                                                    @else
+                                                        <span class="badge bg-danger">{{ $item->urun_durumadi }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('updateproduct', $item->product_id) }}"
+                                                        class="me-2"><i class="bi bi-pencil text-success"></i></a>
+                                                    <a href="{{ route('deleteproduct', $item->product_id) }}"><i
+                                                            class="bi bi-trash text-danger"></i></a>
                                                 </td>
                                             </tr>
                                         @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center text-muted py-4">
+                                                    <i class="bi bi-cart me-2"></i> Sistemde kayıtlı herhangi bir
+                                                    ürün bulunamadı.
+                                                </td>
+                                            </tr>
                                         @endforelse
-
                                     </tbody>
                                 </table>
                             </div>

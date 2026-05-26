@@ -29,5 +29,9 @@ Route::get('/urun/{id?}', function ($id = 0) {
     return view('front.product-detail');
 })->name('product-detail');
 
+Route::get('/home/request', function () {
+    return view('front.contactform');
+})->name('request');
+
 
 

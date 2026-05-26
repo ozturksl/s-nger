@@ -66,7 +66,7 @@
                                     AD - SOYAD
                                 </label>
                                 <input type="text" name="adsoyad" class="form-control custom-border w-100"
-                                    placeholder="Kullanıcı adı giriniz." value="">
+                                    placeholder="Ad ve soyad giriniz." value="">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">
@@ -119,7 +119,8 @@
                                         src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
                                         height="auto" alt="">
                                 @else
-                                    <p>Kullanıcı bulunamadı veya ID geçersiz.</p>
+                                    <img src="{{ asset('admin/assets/images.png') }}" width="150"
+                                        height="auto" alt="">
                                 @endif
                                 </label>
                                 <input class="form-control w-100 custom-border" type="file"

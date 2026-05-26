@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Kategori Düzenleme
+    Kategori Düzenle
 @endsection
 
 @section('css')
@@ -46,7 +46,7 @@
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">Kategori Düzenle</h1>
-                    <p class="text-muted">Kullanıcı güncellemelerinin yapıldığı bölüm</p>
+                    <p class="text-muted">Mevcut kategorileri düzenleyin.</p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
@@ -71,7 +71,7 @@
                             <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
                                 <button type="submit" class="btn btn-success px-4 py-2 col-12 col-sm-auto">
                                     <i class="bi bi-check-circle me-2"></i>
-                                    Kullanıcı Güncelle
+                                    Kategori Güncelle
                                 </button>
                                 <a href="{{ route('category') }}"
                                     class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">

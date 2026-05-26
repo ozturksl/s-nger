@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ContentController;
-use App\Http\Controllers\SeoController;
-use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProdCategoriesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SeoController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/lpanel/login', function () {
@@ -61,15 +61,11 @@ Route::post('/lpanel/category/update/action/{id}', [ProdCategoriesController::cl
 
 Route::get('/lpanel/category/delete/{id}', [ProdCategoriesController::class, 'deleteCategory'])->name('deletecategory');
 
-
-Route::get('/lpanel/product', function () {
-    return view('lpanel.front.productsetting');
-})->name('products');
+Route::get('/lpanel/product', [ProductController::class, 'getProduct'])->name('products');
 
 Route::get('/lpanel/product/new', function () {
     return view('lpanel.front.productadd');
 })->name('newproducts');
-
 
 Route::post('/lpanel/product/new/action', [ProductController::class, 'addProduct'])->name('addedproduct');
 

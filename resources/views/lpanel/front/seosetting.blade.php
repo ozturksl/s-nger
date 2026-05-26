@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    SEO Ayarları
+    SEO Yönetimi
 @endsection
 
 @section('css')
@@ -22,6 +22,20 @@
     </div>
 @endif
 
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
 @section('content')
     <div class="d-flex flex-row min-vh-100">
@@ -32,8 +46,8 @@
 
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
-                    <h1 class="fs-2 fw-bold mb-1">SEO Ayarları</h1>
-                    <p class="text-muted">SEO Ayarlarının yapıldığı bölüm</p>
+                    <h1 class="fs-2 fw-bold mb-1">SEO Yönetimi</h1>
+                    <p class="text-muted">SEO içeriklerini düzenleyin.</p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">

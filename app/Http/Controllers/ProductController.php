@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\ProductModel;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -16,8 +18,8 @@ class ProductController extends Controller
             'urun_aciklama' => 'required|string',
             'urun_fiyat' => 'required|integer',
             'urun_ozellikler' => 'required|string',
-            'urun_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'category_id' => 'required|exists:prodcategories,category_id',
+            'urun_foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category_id' => 'nullable|integer|exists:prodcategories,category_id',
             'product_status_id' => 'required|exists:product_status,product_status_id',
         ],
 
@@ -25,11 +27,11 @@ class ProductController extends Controller
                 'urun_adi.required' => 'Ürün Adı alanı boş bırakılamaz.',
                 'urun_aciklama.required' => 'Ürün Açıklama alanı boş bırakılamaz.',
                 'urun_fiyat.required' => 'Ürün Fiyat alanı boş bırakılamaz.',
-                'urun_ozellikler.required' => 'Ürün ÖZellikleri alanı boş bırakılamaz.',
+                'urun_ozellikler.required' => 'Ürün Özellikleri alanı boş bırakılamaz.',
+                'urun_foto.required' => 'Ürün Fotoğrafı boş bırakılamaz.',
                 'max' => 'Girilen değer çok uzun.',
                 'mimes' => 'Dosya izin verilen türde değil.',
-                'category_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
-                'product_status_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
+                'product_status_id.required' => 'Ürün Durum seçimi boş bırakılamaz.',
 
             ]
         );
@@ -67,13 +69,13 @@ class ProductController extends Controller
     public function getProduct()
     {
         try {
-            $product = DB::table('product')
-                ->join('prodcategories', 'product.category_id', '=', 'prodcategories.category_id')
-                ->join('product_status', 'product.status_id', '=', 'product_status.product_status_id')
+            $products = DB::table('product')
+                ->leftJoin('prodcategories', 'product.category_id', '=', 'prodcategories.category_id')
+                ->join('product_status', 'product.product_status_id', '=', 'product_status.product_status_id')
                 ->select(
                     'product.*',
                     'prodcategories.category_name as kategori_adi',
-                    'product_status.product_status_name as urun_durumadi',
+                    'product_status.product_status_name as urun_durumadi'
                 )
                 ->get();
 
@@ -82,15 +84,15 @@ class ProductController extends Controller
         } catch (Exception $e) {
             Log::error('Ürün listeleme hatası: '.$e->getMessage());
 
-            return redirect()->back()->with('error', 'Ürünler listelenirken bir hata oluştu.');
+            dd($e->getMessage());
         }
     }
 
     public function updateProduct($id)
     {
-        $product = DB::table('product')->where('product_id', $id)->first();
+        $products = DB::table('product')->where('product_id', $id)->first();
 
-        if (! $product) {
+        if (! $products) {
             return redirect()->back()->with('error', 'Ürün bulunamadı.');
         }
 
@@ -99,28 +101,6 @@ class ProductController extends Controller
 
     public function updateProductAction(Request $request, $id)
     {
-        $request->validate([
-            'urun_adi' => 'required|string',
-            'urun_aciklama' => 'required|string',
-            'urun_fiyat' => 'required|integer|max:7',
-            'urun_ozellikler' => 'required|integer',
-            'urun_foto' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'category_id' => 'required|exists:prodcategories,category_id',
-            'product_status_id' => 'required|exists:product_status,product_status_id',
-        ],
-
-            [
-                'urun_adi.required' => 'Ürün Adı alanı boş bırakılamaz.',
-                'urun_aciklama.required' => 'Ürün Açıklama alanı boş bırakılamaz.',
-                'urun_fiyat.required' => 'Ürün Fiyat alanı boş bırakılamaz.',
-                'urun_ozellikler.required' => 'Ürün ÖZellikleri alanı boş bırakılamaz.',
-                'max' => 'Girilen değer çok uzun.',
-                'mimes' => 'Dosya izin verilen türde değil.',
-                'category_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
-                'product_status_id.required' => 'Ürün Kategori seçimi boş bırakılamaz.',
-
-            ]
-        );
 
         try {
             $currentProduct = DB::table('product')->where('product_id', $id)->first();
@@ -171,19 +151,19 @@ class ProductController extends Controller
     public function deleteProduct($id)
     {
         try {
-            $product = DB::table('')->where('user_id', $id)->first();
+            $product = DB::table('product')->where('product_id', $id)->first();
 
-            if (! $user) {
-                return redirect()->back()->with('error', 'Kullanıcı veritabanında bulunamadı.');
+            if (! $product) {
+                return redirect()->back()->with('error', 'Ürün veritabanında bulunamadı.');
             }
 
-            if (! empty($user->user_photo)) {
-                Storage::disk('public')->delete('user/'.$user->user_photo);
+            if (! empty($product->product_photo)) {
+                Storage::disk('public')->delete('product/'.$product->product_photo);
             }
 
-            DB::table('users')->where('user_id', $id)->delete();
+            DB::table('product')->where('product_id', $id)->delete();
 
-            return redirect()->back()->with('success', 'Kullanıcı ve profil fotoğrafı başarıyla silindi.');
+            return redirect()->back()->with('success', 'Ürün başarıyla silindi.');
 
         } catch (Exception $e) {
             Log::error('Silme hatası: '.$e->getMessage());

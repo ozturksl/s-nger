@@ -46,7 +46,7 @@
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">Ürün Ekle</h1>
-                    <p class="text-muted">Yeni ürün eklemek için aşağıdaki formu doldurun.</p>
+                    <p class="text-muted">Yeni ürünler ekleyin.</p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
@@ -65,35 +65,35 @@
                                 <label class="form-label fw-bold">
                                     ÜRÜN ADI
                                 </label>
-                                <input type="text" name="urun_adi"
-                                    class="form-control custom-border w-100" placeholder="Ürün adını giriniz"
-                                    value="">
+                                <input type="text" name="urun_adi" class="form-control custom-border w-100"
+                                    placeholder="Ürün adı giriniz." value="">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">
                                     ÜRÜN AÇIKLAMASI
                                 </label>
-                                <textarea name="urun_aciklama" class="form-control custom-border w-100"
-                                    placeholder="Ürün açıklamasını giriniz" rows="4"></textarea>
+                                <textarea name="urun_aciklama" class="form-control custom-border w-100" placeholder="Ürün açıklaması giriniz."
+                                    rows="4"></textarea>
                             </div>
-                             <div class="mb-4">
+                            <div class="mb-4">
                                 <label for="urun_kategori" class="form-label fw-bold">
                                     KATEGORİ
                                 </label>
                                 <select name="category_id" class="form-control custom-border">
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->category_id }}">{{ $category->category_name}}
-                                        </option>
-                                    @endforeach
+                                    @forelse ($categories as $category)
+                                        <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                                    @empty
+                                        <option value="none" disabled selected>Kategori bulunamadı.</option>
+                                    @endforelse
                                 </select>
                             </div>
-                             <div class="mb-4">
+                            <div class="mb-4">
                                 <label for="urun_durum" class="form-label fw-bold">
                                     DURUM
                                 </label>
                                 <select name="product_status_id" class="form-control custom-border">
                                     @foreach ($productstatus as $status)
-                                        <option value="{{ $status->product_status_id }}">{{ $status->product_status_name}}
+                                        <option value="{{ $status->product_status_id }}">{{ $status->product_status_name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -103,7 +103,7 @@
                                     ÜRÜN FİYATI
                                 </label>
                                 <div class="input-group flex-nowrap">
-                                    <input type="number" name="urun_fiyat"
+                                    <input type="number" name="urun_fiyat" placeholder="Ürün fiyatı giriniz."
                                         class="form-control custom-border" placeholder="0.00" value="" step="0.01"
                                         min="0">
                                     <span class="input-group-text">₺</span>
@@ -114,8 +114,8 @@
                                 <label class="form-label fw-bold">
                                     ÜRÜN ÖZELLİKLERİ
                                 </label>
-                                <textarea name="urun_ozellikler" class="form-control custom-border w-100"
-                                    placeholder="Ürün özelliklerini giriniz (her özellik yeni satırda)" rows="5"></textarea>
+                                <textarea name="urun_ozellikler" class="form-control custom-border w-100" placeholder="Ürün özelliği giriniz."
+                                    rows="5"></textarea>
                             </div>
 
                             <div class="mb-4">
@@ -135,7 +135,8 @@
                                     <i class="bi bi-check-circle me-2"></i>
                                     Ürünü Kaydet
                                 </button>
-                                <a href="{{ route('products') }}" class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
+                                <a href="{{ route('products') }}"
+                                    class="btn btn-outline-danger px-4 py-2 col-12 col-sm-auto text-center">
                                     <i class="bi bi-x-circle me-2"></i>
                                     İptal
                                 </a>

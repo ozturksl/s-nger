@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Models\ContentModel;
 use App\Models\ProductCategoriesModel;
-use App\Models\ProductModel;
 use App\Models\ProductStatusModel;
 use App\Models\UsersModel;
 use App\Models\UserStatusModel;
@@ -61,8 +60,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', $categories);
         });
 
-        View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
-            $view->with('products', ProductModel::all());
+        View::composer(['lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
+            $view->with('categories', DB::table('prodcategories')->get());
         });
 
         View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {

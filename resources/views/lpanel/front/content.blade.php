@@ -8,29 +8,31 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
 @endsection
 
-@if ($errors->any())
-    <div
-        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-        <strong style="display: block; margin-bottom: 5px;">Lütfen aşağıdaki hataları düzeltiniz:</strong>
-        <ul style="margin: 0; padding-left: 20px;">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
     </div>
 @endif
 
 @if (session('error'))
-    <div
-        style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-        <strong>Hata:</strong> {{ session('error') }}
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
     </div>
 @endif
 
-@if (session('success'))
-    <div
-        style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
-        <strong>Başarılı!</strong> {{ session('success') }}
+@if ($errors->any())
+    <div class="alert alert-danger mb-4" role="alert">
+        <div class="fw-bold mb-2">
+            <i class="bi bi-x-circle-fill me-2"></i>
+            Lütfen formdaki hataları düzeltiniz:
+        </div>
+        <ul class="mb-0 ps-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
 @endif
 
@@ -44,7 +46,7 @@
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">İçerik Yönetimi</h1>
-                    <p class="text-muted">Site içeriklerini değiştirildiği bölüm</p>
+                    <p class="text-muted">Site içeriklerini düzenleyin.</p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">

@@ -1,7 +1,7 @@
 @extends('lpanel.layouts.layout')
 
 @section('title')
-    Kategori Ekleme
+    Kategori Ekle
 @endsection
 
 @section('css')
@@ -46,7 +46,7 @@
             <div class="flex-grow-1 p-3 p-md-4">
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">Kategori Ekle</h1>
-                    <p class="text-muted">Yeni kategori eklemelerinin yapıldığı bölüm</p>
+                    <p class="text-muted">Yeni kategoriler ekleyin.</p>
                 </div>
 
                 <div class="custom-border rounded-4 bg-white shadow-sm w-100 overflow-hidden">
@@ -65,7 +65,7 @@
                                     KATEGORİ ADI
                                 </label>
                                 <input type="text" name="kategori_adi"
-                                    class="form-control custom-border w-100" placeholder="Kategori giriniz."
+                                    class="form-control custom-border w-100" placeholder="Kategori adı giriniz."
                                     value="">
                             </div>
                             <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
