@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+}
+
+html,
+body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+}
+
+#sidebar-list li a {
+      color: black;
+      transition: all 0.3s ease;
+      display: inline-block;
+}
+
+.navbar-mobile {
+      width: 70px;
+      float: left;
+}
+
+.form-control:focus {
+      box-shadow: none;
+      outline: 0;
+      border-color: red;
+}
+
+#sidebar-list li a:hover {
+      color: darkred;
+      transform: translateX(10px);
+}
+
+img,
+svg,
+video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+}
+
+.custom-color {
+      background-color: #f9f9ff;
+      min-width: 0 !important;
+      overflow-x: hidden;
+      flex: 1;
+}
+
+.custom-border {
+      border: 2px solid #eabbbb;
+}
+
+.custom-border-right {
+      border-right: 2px solid #eabbbb;
+}
+
+.custom-border-top {
+      border-top: 2px solid #eabbbb;
+}
+
+.custom-border-bottom {
+      border-bottom: 2px solid #eabbbb;
+}
+
+.card {
+      transition: all 0.3s ease;
+}
+
+.card:hover {
+      transform: translateY(-5px);
+}
+
+.sidebar-main {
+      width: 280px;
+      flex-shrink: 0;
+}
+
+.cards .custom-border {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards .custom-border:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+}
+
+.table {
+      width: 100%;
+      margin-bottom: 0;
+      vertical-align: top;
+}
+
+.form-control {
+      width: 100%;
+      max-width: 100%;
+}
+
+.obf-photo{
+      object-fit: cover;
+      width: 30px;
+      height: 30px;
+}
