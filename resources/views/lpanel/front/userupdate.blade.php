@@ -113,7 +113,7 @@
                             </div>
                             <div class="mb-4">
                                 @if ($user)
-                                    <img src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
+                                    <img class="p-3" src="{{ asset('storage/user/' . $user->user_photo) }}" width="150"
                                         height="auto" alt="">
                                 @else
                                     <img src="{{ asset('admin/assets/images.png') }}" width="150"

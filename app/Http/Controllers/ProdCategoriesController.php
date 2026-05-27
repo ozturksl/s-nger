@@ -49,7 +49,7 @@ class ProdCategoriesController extends Controller
         $category = DB::table('prodcategories')->where('category_id', $id)->first();
 
         if (! $category) {
-            return redirect()->back()->with('error', 'Kategori bulunamadı');
+            return redirect()->route('category')->with('error', 'Kategori bulunamadı');
         }
 
         return view('lpanel.front.categoryupdate', compact('category'));
@@ -61,7 +61,7 @@ class ProdCategoriesController extends Controller
             $currentCategories = DB::table('prodcategories');
 
             if (! $currentCategories) {
-                return redirect()->back()->with('error', 'Güncellenecek kategori bulunamadı');
+                return redirect()->route('category')->with('error', 'Güncellenecek kategori bulunamadı');
             }
 
             $data = [
@@ -73,12 +73,12 @@ class ProdCategoriesController extends Controller
                 ->where('category_id', $id)
                 ->update($data);
 
-            return redirect()->back()->with('success', 'Kategori başarıyla güncellendi!');
+            return redirect()->route('category')->with('success', 'Kategori başarıyla güncellendi!');
 
         } catch (Exception $e) {
             Log::error('Güncelleme hatası: '.$e->getMessage());
 
-            return redirect()->back()->withInput()->with('error', 'Veritabanı işlemi sırasında bir hata oluştu');
+            return redirect()->route('category')->withInput()->with('error', 'Veritabanı işlemi sırasında bir hata oluştu');
 
         }
     }

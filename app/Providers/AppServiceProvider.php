@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\ContentModel;
 use App\Models\ProductCategoriesModel;
 use App\Models\ProductStatusModel;
+use App\Models\ProductModel;
 use App\Models\UsersModel;
 use App\Models\UserStatusModel;
 use App\Models\UserTypeModel;
@@ -19,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['partials.footer', 'lpanel.front.content', 'front.contact'], function ($view) {
-            $view->with('content', ContentModel::all());
+            $view->with('content', ContentModel::first());
         });
 
         View::composer(['layouts.layout', 'partials.footer', 'partials.header', 'lpanel.front.seosetting'], function ($view) {
@@ -64,14 +65,30 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', DB::table('prodcategories')->get());
         });
 
+        View::composer(['front.index', 'front.product', 'front.product-detail'], function ($view) {
+            $view->with('categories', DB::table('prodcategories')->get());
+        });
+
         View::composer(['lpanel.front.productsetting', 'lpanel.front.productupdate', 'lpanel.front.productadd'], function ($view) {
             $productStatus = ProductStatusModel::select('product_status_name', 'product_status_id')->get();
             $view->with('productstatus', $productStatus);
         });
 
-        View::composer(['lpanel.front.index' , 'front.contactform'], function ($view) {
+        View::composer(['lpanel.front.index', 'front.contactform'], function ($view) {
             $serviceTypes = DB::table('service_type_models')->get();
             $view->with('serviceTypes', $serviceTypes);
+        });
+
+        View::composer('front.index', function ($view) {
+            $view->with('featuredProducts', ProductModel::latest()->take(8)->get());
+        });
+
+        View::composer('front.product', function ($view) {
+            $view->with('allProducts', ProductModel::latest()->paginate(12));
+        });
+
+        View::composer('front.product-detail', function ($view) {
+            $view->with('relatedProducts', ProductModel::inRandomOrder()->take(4)->get());
         });
 
     }

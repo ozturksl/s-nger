@@ -66,17 +66,17 @@
                                 <label for="seocomment" class="form-label fw-bold">
                                     SEO AÇIKLAMA
                                 </label>
-                                <textarea name="seocomment" class="form-control custom-border w-100" placeholder="Açıklama giriniz." rows="3"></textarea>
+                                <textarea name="seocomment" class="form-control custom-border w-100" placeholder="Açıklama giriniz." rows="3">{{ $seoData->seo_comment }}</textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="seokey" class="form-label fw-bold">
                                     ANAHTAR KELİMELER
                                 </label>
-                                <textarea name="seokey" class="form-control custom-border w-100" placeholder="Anahtar kelime giriniz."></textarea>
+                                <textarea name="seokey" class="form-control custom-border w-100" placeholder="Anahtar kelime giriniz.">{{ $seoData->seo_keys }}</textarea>
                             </div>
 
                             <div class="mb-4">
-                                <img src="{{ asset('storage/seo/' . $seoData->seo_favicon) }}" width="150" height="auto"
+                                <img class="p-3" src="{{ asset('storage/seo/' . $seoData->seo_favicon) }}" width="150" height="auto"
                                     alt="">
                                 <label for="seofavicon" class="form-label fw-bold">
                                     FAVİCON
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <img src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" width="150" height="auto"
+                                <img class="p-3" src="{{ asset('storage/seo/' . $seoData->seo_icon) }}" width="150" height="auto"
                                     alt="">
                                 <label for="seoicon" class="form-label fw-bold">
                                     LOGO

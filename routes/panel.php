@@ -15,7 +15,7 @@ Route::get('/lpanel/login', function () {
 
 Route::post('/lpanel/dashboard', [LoginController::class, 'loginFunction'])->name('login.submit');
 
-//Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/lpanel/dashboard', [ServiceRequestController::class, 'getService'])->name('dashboard');
     Route::get('/lpanel/dashboard/service/delete/{id}', [ServiceRequestController::class, 'deleteService'])->name('deleterequest');
@@ -65,4 +65,4 @@ Route::post('/lpanel/dashboard', [LoginController::class, 'loginFunction'])->nam
     Route::post('/lpanel/product/update/action/{id}', [ProductController::class, 'updateProductAction'])->name('updatedproduct');
     Route::get('/lpanel/product/delete/{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
 
-//});
+});

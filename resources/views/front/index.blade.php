@@ -27,11 +27,12 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12 slider-texts pt-lg-5 mt-lg-5 mt-4 ps-lg-4 pe-lg-2 px-3">
-                    <h1 class="fw-bold first-container-text pt-3 pt-lg-0">ANKARA'NIN EN KALİTELİ SERVİSİ HİZMETİNİZDE</h1>
-                    <p class="pb-3 pb-lg-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                        Ipsum
-                        has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley of type and scrambled </p>
+                    <h1 class="fw-bold first-container-text pt-3 pt-lg-0">ANKARA DİKİŞ MAKİNESİ SERVİSİ</h1>
+                    <p class="pb-3 pb-lg-4">Sektördeki yılların verdiği tecrübe ve uzman kadromuzla, Ankara genelinde ev ve
+                        sanayi tipi her marka dikiş, nakış ve overlok makinesinin garantili teknik servis, periyodik bakım
+                        ve orijinal yedek parça hizmetini sunarken, bütçenize en uygun sıfır ve revizyonlu ikinci el dikiş
+                        makinesi modellerinin satışı ile de dikiş yolculuğunuzda güvenilir çözüm ortağınız olmaya devam
+                        ediyoruz.</p>
                     <div class="button-main">
                         <a href="{{ route('about') }}" class="px-5 py-3 text-decoration-none d-inline-block">Keşfedin</a>
                     </div>
@@ -62,95 +63,38 @@
     </section>
 
     <section class="py-4 py-lg-5 my-4 my-lg-5 overflow-hidden">
-        <h1 class="text-center fw-bold pt-3 pt-lg-5 pb-3 pb-lg-4">ÖNE ÇIKAN ÜRÜNLER</h1>
+        <h1 class="text-center fw-bold testimonials-title">ÖNE ÇIKAN ÜRÜNLER</h1>
+        <p class="text-center testimonials-subtitle text-muted">Ankara'da en çok tercih edilen, kaliteli ve garantili sıfır
+            ile ikinci el dikiş makinesi modellerimizi inceleyin.</p>
         <div class="container py-2">
             <div class="swiper productSwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide p-2">
-                        <div class="card product-card shadow-sm h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img src="{{ asset('site/assets/makina.png') }}"
-                                    class="card-img-top product-card-img img-fluid" alt="Ürün">
-                                <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
-                                    Çıkan</span>
-                            </div>
-                            <div class="card-body d-flex flex-column p-3 p-lg-4">
-                                <h5 class="card-title mb-2 fs-6 fs-lg-5">Ürün Başlığı 1</h5>
-                                <p class="text-secondary small mb-4">Endüstriyel kalite ve yüksek performans.</p>
-                                <div class="mt-auto d-flex align-items-center justify-content-center">
-                                    <p class="fw-bold text-danger mb-0 fs-5">500 TL</p>
+                    @forelse ($featuredProducts as $item)
+                        <div class="swiper-slide p-2">
+                            <div class="card product-card shadow-sm h-100">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('storage/product/' . $item->product_photo) }}"
+                                        class="card-img-top product-card-img img-fluid" alt="Ürün">
+                                    <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
+                                        Çıkan</span>
+                                </div>
+                                <div class="card-body d-flex flex-column p-3 p-lg-4">
+                                    <h5 class="card-title mb-2 fs-6 fs-lg-5">{{ $item->product_name }}</h5>
+                                    <p class="text-secondary small mb-4">{{ $item->product_comment }}</p>
+                                    <div class="mt-auto d-flex align-items-center justify-content-center">
+                                        <p class="fw-bold text-danger mb-0 fs-5">{{ $item->product_price }}TL</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide p-2">
-                        <div class="card product-card shadow-sm h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img src="{{ asset('site/assets/makina.png') }}"
-                                    class="card-img-top product-card-img img-fluid" alt="Ürün">
-                                <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
-                                    Çıkan</span>
-                            </div>
-                            <div class="card-body d-flex flex-column p-3 p-lg-4">
-                                <h5 class="card-title mb-2 fs-6 fs-lg-5">Ürün 2</h5>
-                                <p class="text-secondary small mb-4">Dayanıklı ve güvenilir performans.</p>
-                                <div class="mt-auto d-flex align-items-center justify-content-center">
-                                    <p class="fw-bold text-danger mb-0 fs-5">600 TL</p>
-                                </div>
-                            </div>
+                    @empty
+
+                        <div class="col-12 text-center py-5 text-muted">
+                            <i class="bi bi-box-seam fs-1 d-block mb-3"></i>
+                            <p class="mb-0 fw-semibold">Şu anda ürün bulunmamaktadır.</p>
+                            <small>Ürünlerimiz çok yakında listelenecektir.</small>
                         </div>
-                    </div>
-                    <div class="swiper-slide p-2">
-                        <div class="card product-card shadow-sm h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img src="{{ asset('site/assets/makina.png') }}"
-                                    class="card-img-top product-card-img img-fluid" alt="Ürün">
-                                <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
-                                    Çıkan</span>
-                            </div>
-                            <div class="card-body d-flex flex-column p-3 p-lg-4">
-                                <h5 class="card-title mb-2 fs-6 fs-lg-5">Ürün 3</h5>
-                                <p class="text-secondary small mb-4">Konforlu kullanım için tasarlandı.</p>
-                                <div class="mt-auto d-flex align-items-center justify-content-center">
-                                    <p class="fw-bold text-danger mb-0 fs-5">700 TL</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide p-2">
-                        <div class="card product-card shadow-sm h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img src="{{ asset('site/assets/makina.png') }}"
-                                    class="card-img-top product-card-img img-fluid" alt="Ürün">
-                                <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
-                                    Çıkan</span>
-                            </div>
-                            <div class="card-body d-flex flex-column p-3 p-lg-4">
-                                <h5 class="card-title mb-2 fs-6 fs-lg-5">Ürün 4</h5>
-                                <p class="text-secondary small mb-4">Yüksek verim için sağlam seçim.</p>
-                                <div class="mt-auto d-flex align-items-center justify-content-center">
-                                    <p class="fw-bold text-danger mb-0 fs-5">800 TL</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide p-2">
-                        <div class="card product-card shadow-sm h-100">
-                            <div class="position-relative overflow-hidden">
-                                <img src="{{ asset('site/assets/makina.png') }}"
-                                    class="card-img-top product-card-img img-fluid" alt="Ürün">
-                                <span class="position-absolute top-0 start-0 badge bg-white text-dark m-3 shadow-sm">Öne
-                                    Çıkan</span>
-                            </div>
-                            <div class="card-body d-flex flex-column p-3 p-lg-4">
-                                <h5 class="card-title mb-2 fs-6 fs-lg-5">Ürün 5</h5>
-                                <p class="text-secondary small mb-4">Güçlü performans ve uzun ömür.</p>
-                                <div class="mt-auto d-flex align-items-center justify-content-center">
-                                    <p class="fw-bold text-danger mb-0 fs-5">900 TL</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
                 <div class="swiper-button-next d-none d-md-flex"></div>
                 <div class="swiper-button-prev d-none d-md-flex"></div>
@@ -161,39 +105,43 @@
                     Ürünleri Görüntüle</a>
             </div>
         </div>
+
+
+
     </section>
 
     <section class="py-4 py-lg-5 my-4 my-lg-5 services-section" id="services-sec">
         <div class="container">
-            <h1 class="fw-bold text-center mb-4 mb-lg-5 service-title">SUNDUĞUMUZ HİZMETLER</h1>
-            <div class="row g-4">
+            <h1 class="text-center fw-bold testimonials-title">SUNDUĞUMUZ HİZMETLER</h1>
+            <p class="text-center testimonials-subtitle text-muted">Dikiş makinelerinizin ömrünü uzatan profesyonel teknik
+                servisimiz ve güvenilir satış çözümlerimizle tanışın.</p>
+            <div class="row g-4 pt-2">
                 <div class="col-xl-3 col-md-6 col-12 service-item">
                     <a href="#" class="service-card d-block position-relative overflow-hidden rounded-3">
                         <img src="{{ asset('site/assets/makina.png') }}" alt="Makine Satışı"
                             class="service-img w-100 img-fluid">
                         <div class="service-overlay">
-                            <h3>Makine Satışı</h3>
-                            <p>Yüksek kaliteli makineler.</p>
+                            <h3>Dikiş Makinesi Satışı</h3>
+                            <p>Ankara'da en iyi markaların yüksek kaliteli sıfır ve ikinci el dikiş makinesi modelleri.</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-xl-3 col-md-6 col-12 service-item">
                     <a href="#" class="service-card d-block position-relative overflow-hidden rounded-3">
-                        <img src="{{ asset('site/assets/ogret.png') }}" alt="Eğitim"
-                            class="service-img w-100 img-fluid">
+                        <img src="{{ asset('site/assets/ogret.png') }}" alt="Eğitim" class="service-img w-100 img-fluid">
                         <div class="service-overlay">
-                            <h3>Eğitim</h3>
-                            <p>Dikiş makinası kullanım eğitimleri.</p>
+                            <h3>Kullanım Eğitimi</h3>
+                            <p>Satın aldığınız ev veya sanayi tipi dikiş makinaları için profesyonel kullanım eğitimleri.
+                            </p>
                         </div>
                     </a>
                 </div>
                 <div class="col-xl-3 col-md-6 col-12 service-item">
                     <a href="#" class="service-card d-block position-relative overflow-hidden rounded-3">
-                        <img src="{{ asset('site/assets/tamir.png') }}" alt="Onarım"
-                            class="service-img w-100 img-fluid">
+                        <img src="{{ asset('site/assets/tamir.png') }}" alt="Onarım" class="service-img w-100 img-fluid">
                         <div class="service-overlay">
-                            <h3>Onarım & Bakım</h3>
-                            <p>Profesyonel onarım ve bakım hizmetleri.</p>
+                            <h3>Onarım & Periyodik Bakım</h3>
+                            <p>Her marka dikiş, nakış ve overlok makinesi için profesyonel onarım ve bakım hizmetleri.</p>
                         </div>
                     </a>
                 </div>
@@ -202,8 +150,8 @@
                         <img src="{{ asset('site/assets/satis.png') }}" alt="Satış Sonrası Hizmet"
                             class="service-img w-100 img-fluid">
                         <div class="service-overlay">
-                            <h3>Satış Sonrası Hizmetler</h3>
-                            <p>7/24 müşteri desteği ve teknik destek</p>
+                            <h3>Satış Sonrası Destek</h3>
+                            <p>Teknik servis güvencesi, yedek parça desteği ve hızlı müşteri çözümleri.</p>
                         </div>
                     </a>
                 </div>
@@ -218,7 +166,8 @@
     <section class="py-4 py-lg-5 my-4 my-lg-5 testimonials-section overflow-hidden">
         <div class="container">
             <h1 class="text-center fw-bold testimonials-title">MÜŞTERI YORUMLARI</h1>
-            <p class="text-center testimonials-subtitle text-muted">Müşterilerimizin deneyimlerini dinleyin</p>
+            <p class="text-center testimonials-subtitle text-muted">Ankara genelinde sunduğumuz dikiş makinesi tamir, bakım
+                ve satış hizmetlerinden yararlanan müşterilerimizin deneyimlerini dinleyin.</p>
             <div class="swiper testimonialsSwiper mt-4 mt-lg-5">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide p-2">
@@ -349,13 +298,13 @@
                             <div class="mb-3">
                                 <label for="adsoyadfr" class="form-label fw-semibold">Adınız Soyadınız</label>
                                 <input type="text" class="form-control" id="fullName" name="adsoyadfr"
-                                    placeholder="Adınızı ve soyadınızı giriniz.">
+                                    placeholder="Adınızı ve soyadınızı giriniz." required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="kullanici_mesaj" class="form-label fw-semibold">Mesajınız</label>
                                 <textarea class="form-control service-input" id="message" name="kullanici_mesaj" rows="4"
-                                    placeholder="Sorununuz veya talebiniz hakkında kısa bir bilgi verebilirsiniz."></textarea>
+                                    placeholder="Sorununuz veya talebiniz hakkında kısa bir bilgi verebilirsiniz." required></textarea>
                             </div>
 
                             <div class="mb-4 text-center form-info-text">

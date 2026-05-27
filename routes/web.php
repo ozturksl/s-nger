@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceRequestController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ Route::get('/home/product', function () {
     return view('front.product');
 })->name('product');
 
-Route::get('/urun/{id?}', function ($id = 0) {
-    return view('front.product-detail');
-})->name('product-detail');
+Route::get('/urun/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
 
 Route::get('/home/request', function () {
     return view('front.contactform');

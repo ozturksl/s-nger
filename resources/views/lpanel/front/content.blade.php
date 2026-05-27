@@ -44,6 +44,7 @@
             @include('lpanel.partials.topbar')
 
             <div class="flex-grow-1 p-3 p-md-4">
+
                 <div class="mb-4">
                     <h1 class="fs-2 fw-bold mb-1">İçerik Yönetimi</h1>
                     <p class="text-muted">Site içeriklerini düzenleyin.</p>
@@ -59,28 +60,27 @@
 
                     <form action="{{ route('contentupdate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @foreach($content as $item)
                         <div class="p-3 p-md-4">
                             <div class="mb-4">
                                 <label for="insta-link" class="form-label fw-bold">
                                     INSTAGRAM LİNK
                                 </label>
                                 <input type="url" name="insta-link" class="form-control custom-border w-100"
-                                    placeholder="Link giriniz." value="{{ $item->ct_instagram }}">
+                                    placeholder="Link giriniz." value="{{ $content->ct_instagram ?? '' }}">
                             </div>
                             <div class="mb-4">
                                 <label for="linkedin-link" class="form-label fw-bold">
                                     LİNKEDİN LİNK
                                 </label>
                                 <input type="url" name="linkedin-link" class="form-control custom-border w-100"
-                                    placeholder="Link giriniz." value="{{ $item->ct_linkedin }}">
+                                    placeholder="Link giriniz." value="{{ $content->ct_linkedin ?? '' }}">
                             </div>
                             <div class="mb-4">
                                 <label for="harita" class="form-label fw-bold">
                                     HARİTA LİNK
                                 </label>
                                 <input type="url" name="harita" class="form-control custom-border w-100"
-                                    placeholder="Link giriniz." value="{{ $item->ct_harita }}">
+                                    placeholder="Link giriniz." value="{{ $content->ct_harita ?? '' }}">
                             </div>
 
                             <div class="mb-4">
@@ -88,32 +88,31 @@
                                     ADRES
                                 </label>
                                 <input type="text" name="address" class="form-control custom-border w-100"
-                                    placeholder="Adres giriniz." value="{{ $item->ct_address }}">
+                                    placeholder="Adres giriniz." value="{{ $content->ct_address ?? '' }}">
                             </div>
                             <div class="mb-4">
                                 <label for="mail" class="form-label fw-bold">
                                     MAİL ADRESİ
                                 </label>
-                                <input type="mail" name="mail" class="form-control custom-border w-100"
-                                    placeholder="Mail giriniz." value="{{ $item->ct_mail }}">
+                                <input type="email" name="mail" class="form-control custom-border w-100"
+                                    placeholder="Mail giriniz." value="{{ $content->ct_mail ?? '' }}">
                             </div>
 
                             <div class="mb-4">
                                 <label for="number1" class="form-label fw-bold">
                                     NUMARA-1
                                 </label>
-                                <input type="number" name="number1" class="form-control custom-border w-100"
-                                    placeholder="Numara giriniz.(Başında 0 olmadan)" value="{{ $item->ct_number1 }}">
+                                <input type="text" name="number1" class="form-control custom-border w-100"
+                                    placeholder="Numara giriniz.(Başında 0 olmadan)" value="{{ $content->ct_number1 ?? '' }}">
                             </div>
 
                             <div class="mb-4">
                                 <label for="number2" class="form-label fw-bold">
                                     NUMARA-2
                                 </label>
-                                <input type="number" name="number2" class="form-control custom-border w-100"
-                                    placeholder="Numara giriniz.(Başında 0 olmadan)" value="{{ $item->ct_number2 }}">
+                                <input type="text" name="number2" class="form-control custom-border w-100"
+                                    placeholder="Numara giriniz.(Başında 0 olmadan)" value="{{ $content->ct_number2 ?? '' }}">
                             </div>
-
 
                             <div class="d-flex flex-wrap gap-2 gap-md-3 pt-2">
                                 <button type="submit" class="btn btn-success px-4 py-2 col-12 col-sm-auto">
@@ -126,7 +125,6 @@
                                 </button>
                             </div>
                         </div>
-                        @endforeach
                     </form>
                 </div>
             </div>

@@ -14,69 +14,50 @@
             <div class="row g-4 mb-5">
                 <div class="col-lg-6 col-12">
                     <div class="product-gallery">
-                        <img src="{{ asset('site/assets/makina.png') }}" class="img-fluid">
+                        <img src="{{ asset('storage/product/' . $product->product_photo) }}" class="img-fluid" alt="{{ $product->product_name }}">
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
                     <div class="product-info">
-                        <h1 class="product-title">Dikiş Makinası</h1>
+                        <h1 class="product-title">{{ $product->product_name }}</h1>
 
-                        <div class="product-price">500₺</div>
+                        <div class="product-price">{{ $product->product_price }}₺</div>
 
                         <div class="product-description">
-                            Müşterilerin sıkça beğendiği ucuz fiyatlı dikiş makinası modeli.
+                            {{ $product->product_comment }}
                         </div>
 
-                        <div class="product-features">
-                            <h6>Ürün Özellikleri</h6>
-                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque odio, corporis vel ducimus ab tenetur deserunt officiis dignissimos eius nobis sunt adipisci! Perferendis necessitatibus qui ipsam. Deleniti eos asperiores laboriosam.</p>
-                        </div>
+                        @if(!empty($product->product_feature))
+                            <div class="product-features">
+                                <h6>Ürün Özellikleri</h6>
+                                <p>{{ $product->product_feature }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
+            
             <div class="related-products">
                 <h5>Benzer Ürünler</h5>
                 <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                        <div class="related-card">
-                            <img src="{{ asset('site/assets/makina.png') }}" class="img-fluid">
-                            <div class="related-card-body">
-                                <div class="related-card-title text-truncate">Dikiş Makinası</div>
-                                <div class="related-card-price">500₺</div>
-                            </div>
+                    @forelse($relatedProducts as $related)
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                            <a href="{{ route('product-detail', ['id' => $related->product_id]) }}" class="text-decoration-none text-dark">
+                                <div class="related-card">
+                                    <img src="{{ asset('storage/product/' . $related->product_photo) }}" class="img-fluid" alt="{{ $related->product_name }}">
+                                    <div class="related-card-body">
+                                        <div class="related-card-title text-truncate">{{ $related->product_name }}</div>
+                                        <div class="related-card-price">{{ $related->product_price }}₺</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                        <div class="related-card">
-                            <img src="{{ asset('site/assets/makina.png') }}" class="img-fluid">
-                            <div class="related-card-body">
-                                <div class="related-card-title text-truncate">Dikiş Makinası</div>
-                                <div class="related-card-price">500₺</div>
-                            </div>
+                    @empty
+                        <div class="col-12 text-muted">
+                            <p>Benzer ürün bulunmamaktadır.</p>
                         </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                        <div class="related-card">
-                            <img src="{{ asset('site/assets/makina.png') }}" class="img-fluid">
-                            <div class="related-card-body">
-                                <div class="related-card-title text-truncate">Dikiş Makinası</div>
-                                <div class="related-card-price">500₺</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                        <div class="related-card">
-                            <img src="{{ asset('site/assets/makina.png') }}" class="img-fluid">
-                            <div class="related-card-body">
-                                <div class="related-card-title text-truncate">Dikiş Makinası</div>
-                                <div class="related-card-price">500₺</div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </div>

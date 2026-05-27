@@ -100,7 +100,6 @@ class ProductController extends Controller
 
     public function updateProductAction(Request $request, $id)
     {
-
         try {
             $currentProduct = DB::table('product')->where('product_id', $id)->first();
 
@@ -109,10 +108,10 @@ class ProductController extends Controller
             }
 
             $data = [
-                'product_name' => strip_tags($request->input('urun_adi')),
-                'product_price' => strip_tags($request->input('urun_fiyat')),
-                'product_comment' => strip_tags($request->input('urun_aciklama')),
-                'product_feature' => strip_tags($request->input('urun_ozellikler')),
+                'product_name' => $request->filled('urun_adi') ? strip_tags($request->input('urun_adi')) : $currentProduct->product_name,
+                'product_price' => $request->filled('urun_fiyat') ? strip_tags($request->input('urun_fiyat')) : $currentProduct->product_price,
+                'product_comment' => $request->filled('urun_aciklama') ? strip_tags($request->input('urun_aciklama')) : $currentProduct->product_comment,
+                'product_feature' => $request->filled('urun_ozellikler') ? strip_tags($request->input('urun_ozellikler')) : $currentProduct->product_feature,
                 'category_id' => $request->input('category_id') ?? $currentProduct->category_id,
                 'product_status_id' => $request->input('product_status_id') ?? $currentProduct->product_status_id,
                 'updated_at' => now(),
@@ -129,7 +128,7 @@ class ProductController extends Controller
 
                 $data['product_photo'] = $fileName;
             } else {
-                $data['product_photo'] = $currentProduct->product_photo ?? null;
+                $data['product_photo'] = $currentProduct->product_photo;
             }
 
             DB::table('product')
@@ -173,5 +172,16 @@ class ProductController extends Controller
 
             return redirect()->back()->with('error', 'Silme işlemi başarısız oldu.');
         }
+    }
+
+    public function productDetail($id)
+    {
+        $product = DB::table('product')->where('product_id', $id)->first();
+
+        if (! $product) {
+            return redirect()->back()->with('error', 'Ürün bulunamadı.');
+        }
+
+        return view('front.product-detail', compact('product'));
     }
 }
