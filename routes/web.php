@@ -1,17 +1,15 @@
 <?php
 
-use App\Http\Controllers\ContentController;
-use App\Http\Controllers\SeoController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ServiceRequestController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/home', function () {
-    return view('front.index');
-})->name('home');
 
 Route::get('/', function () {
     return view('front.index');
 })->name('home');
+
+Route::redirect('/home', '/');
+
+Route::post('/', [ServiceRequestController::class, 'addMessage']);
 
 Route::get('/home/about', function () {
     return view('front.about');
@@ -33,5 +31,5 @@ Route::get('/home/request', function () {
     return view('front.contactform');
 })->name('request');
 
-
-
+Route::post('/lpanel/dashboard/add-service', [ServiceRequestController::class, 'addService'])->name('addservice');
+Route::post('/lpanel/dashboard/add-message', [ServiceRequestController::class, 'addMessage'])->name('addmessage');

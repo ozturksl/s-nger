@@ -41,12 +41,12 @@
     <div class="dropdown border-top pt-3 mt-auto">
         <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
             id="dropdownDesktop" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32"
+            <img src="{{ asset('storage/user/' . Auth::user()->user_photo) }}" alt="" width="32" height="32"
                 class="rounded-circle me-2">
-            <strong>Salih Öztürk</strong>
+            <strong>{{ Auth::user()->user_name }}</strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownDesktop">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Çıkış Yap</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right me-2"></i>Çıkış Yap</a></li>
         </ul>
     </div>
 </div>
@@ -95,10 +95,10 @@
         <a href="#"
             class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="28" height="28" class="rounded-circle">
+            <img src="{{ asset('storage/user/' . Auth::user()->user_photo) }}" alt="mdo" width="28" height="28" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Çıkış Yap</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right me-2"></i>Çıkış Yap</a></li>
         </ul>
     </div>
 </div>

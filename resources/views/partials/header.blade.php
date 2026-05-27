@@ -14,14 +14,9 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Anasayfa</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services-sec">Hizmetler</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Hakkımızda</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('product') }}">Ürünler</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('product') }}">Ürünler</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">İletişim</a></li>
             </ul>
-
-            <form class="d-flex align-items-center justify-content-center search-form" role="search">
-                <input class="form-control search-input" type="search" placeholder="Ara..." aria-label="Ara">
-            </form>
         </div>
     </div>
 </nav>

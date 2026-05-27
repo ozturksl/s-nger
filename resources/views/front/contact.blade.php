@@ -49,16 +49,16 @@
         </div>
     </section>
 
-    <section class="py-5 my-5 testimonials-section overflow-hidden">
+    <section class="py-4 py-lg-5 my-4 my-lg-5 testimonials-section overflow-hidden">
         <div class="container">
             <h1 class="text-center fw-bold testimonials-title">MÜŞTERI YORUMLARI</h1>
-            <p class="text-center testimonials-subtitle">Müşterilerimizin deneyimlerini dinleyin</p>
-            <div class="swiper testimonialsSwiper mt-5 px-1">
+            <p class="text-center testimonials-subtitle text-muted">Müşterilerimizin deneyimlerini dinleyin</p>
+            <div class="swiper testimonialsSwiper mt-4 mt-lg-5">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto">
-                            <div class="testimonial-header">
-                                <div class="stars">
+                    <div class="swiper-slide p-2">
+                        <div class="testimonial-card h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="testimonial-header mb-3">
+                                <div class="stars text-warning">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -66,18 +66,21 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text mt-3">Eğitim programları çok faydalı oldu. Personelim oldukça memnun
-                                kaldı.</p>
-                            <div class="testimonial-footer">
-                                <h6 class="testimonial-name">Ali Şen</h6>
-                                <p class="testimonial-role mb-0">Üretim Müdürü</p>
+                            <p class="testimonial-text small text-secondary">Hayri Bey bizi bugün misafir etti bayisine.
+                                Her şeyden önce arızayı doğru tespit etti ve doğru müdahalede bulundu. Servislerin bence en
+                                büyük sıkıntılarından birisi çok basit bir işleme bile bugün bırak bir hafta sonra gel
+                                demeleridir. Makinemizin arızası, anında onarıldı ve bize teslim edildi.
+                                Biz kendisinin hassasiyeti ve güler yüzü için çok teşekkür ederiz. Başarılarını dileriz.</p>
+                            <div class="testimonial-footer mt-4">
+                                <h6 class="testimonial-name fw-bold mb-0">Mehtap Güneş</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto">
-                            <div class="testimonial-header">
-                                <div class="stars">
+                    <div class="swiper-slide p-2">
+                        <div class="testimonial-card h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="testimonial-header mb-3">
+                                <div class="stars text-warning">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -85,18 +88,20 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text mt-3">Eğitim programları çok faydalı oldu. Personelim oldukça memnun
-                                kaldı.</p>
-                            <div class="testimonial-footer">
-                                <h6 class="testimonial-name">Ali Şen</h6>
-                                <p class="testimonial-role mb-0">Üretim Müdürü</p>
+                            <p class="testimonial-text small text-secondary">Benim 38 yıldır kullandığım makinemi birden
+                                hiç bir aksamı çalışmadı. Hayri beye götürdüm tüm içi paslanmış. Tertemiz çalışır vaziyette
+                                makul bir fiyata teslim etti. Hatta söylemediğim halde denge sallanma sorununu da gidermiş.
+                                Teşekkürler</p>
+                            <div class="testimonial-footer mt-4">
+                                <h6 class="testimonial-name fw-bold mb-0">Şeniz Coşkun</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto">
-                            <div class="testimonial-header">
-                                <div class="stars">
+                    <div class="swiper-slide p-2">
+                        <div class="testimonial-card h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="testimonial-header mb-3">
+                                <div class="stars text-warning">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -104,18 +109,20 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text mt-3">Eğitim programları çok faydalı oldu. Personelim oldukça memnun
-                                kaldı.</p>
-                            <div class="testimonial-footer">
-                                <h6 class="testimonial-name">Ali Şen</h6>
-                                <p class="testimonial-role mb-0">Üretim Müdürü</p>
+                            <p class="testimonial-text small text-secondary">İlk makinemi aldığımda tecrübesiz olduğum için
+                                sabırla anlattı nasıl kullanacağımı,telefonla dahi sorunumu çözmeye çalıştı olmadı. Artık
+                                acemi değilim overlok makinemide aldım. Hayri beye çok teşekkür ederim .hem düzgün satıcı
+                                hemde teknik serviste başarılı .</p>
+                            <div class="testimonial-footer mt-4">
+                                <h6 class="testimonial-name fw-bold mb-0">Ayfer Gündüzlü</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto">
-                            <div class="testimonial-header">
-                                <div class="stars">
+                    <div class="swiper-slide p-2">
+                        <div class="testimonial-card h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="testimonial-header mb-3">
+                                <div class="stars text-warning">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -123,18 +130,20 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text mt-3">Eğitim programları çok faydalı oldu. Personelim oldukça memnun
-                                kaldı.</p>
-                            <div class="testimonial-footer">
-                                <h6 class="testimonial-name">Ali Şen</h6>
-                                <p class="testimonial-role mb-0">Üretim Müdürü</p>
+                            <p class="testimonial-text small text-secondary">Tamire götürdüğümüz makinemizi gayet başarılı
+                                tamir etti yeni bir ürün de aldık her türlü sorumuzu cevapladı üstelik yeni aldığımız
+                                makineyle ilgili ne zaman sorumuz olsa aradık sorularımızı cevapladı başarılı ve güvenilir
+                                bir esnaf</p>
+                            <div class="testimonial-footer mt-4">
+                                <h6 class="testimonial-name fw-bold mb-0">Gülcan Vurgun</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial-card w-100 mx-auto">
-                            <div class="testimonial-header">
-                                <div class="stars">
+                    <div class="swiper-slide p-2">
+                        <div class="testimonial-card h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="testimonial-header mb-3">
+                                <div class="stars text-warning">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -142,17 +151,18 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text mt-3">Eğitim programları çok faydalı oldu. Personelim oldukça memnun
-                                kaldı.</p>
-                            <div class="testimonial-footer">
-                                <h6 class="testimonial-name">Ali Şen</h6>
-                                <p class="testimonial-role mb-0">Üretim Müdürü</p>
+                            <p class="testimonial-text small text-secondary">Kendisinden birkaç gün önce dikiş makinesi
+                                aldım. Öğrenci olduğum için beni kırmadı, güzel bir indirim yaptı. Hem tamir konusunda hem
+                                de yeni makine alımında güvenle tercih edebilirsiniz.</p>
+                            <div class="testimonial-footer mt-4">
+                                <h6 class="testimonial-name fw-bold mb-0">Zeynep Aydın</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-next testimonial-next"></div>
-                <div class="swiper-button-prev testimonial-prev"></div>
+                <div class="swiper-button-next testimonial-next d-none d-md-flex"></div>
+                <div class="swiper-button-prev testimonial-prev d-none d-md-flex"></div>
                 <div class="swiper-pagination testimonials-pagination"></div>
             </div>
         </div>

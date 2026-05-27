@@ -69,5 +69,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('productstatus', $productStatus);
         });
 
+        View::composer(['lpanel.front.index' , 'front.contactform'], function ($view) {
+            $serviceTypes = DB::table('service_type_models')->get();
+            $view->with('serviceTypes', $serviceTypes);
+        });
+
     }
 }

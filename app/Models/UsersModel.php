@@ -40,4 +40,5 @@ class UsersModel extends Authenticatable
     {
         return $this->belongsTo(UserStatusModel::class, 'user_status_id', 'user_status_id');
     }
+    
 }

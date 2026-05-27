@@ -21,9 +21,4 @@ return new class extends Migration
             ['product_status_name' => 'Etkin Değil'],
         ]);
     }
-
-   public function down(): void
-    {
-        Schema::dropIfExists('product_status');
-    }
 };

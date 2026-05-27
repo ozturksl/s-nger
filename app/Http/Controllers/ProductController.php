@@ -84,7 +84,6 @@ class ProductController extends Controller
         } catch (Exception $e) {
             Log::error('Ürün listeleme hatası: '.$e->getMessage());
 
-            dd($e->getMessage());
         }
     }
 

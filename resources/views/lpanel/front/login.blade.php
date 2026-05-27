@@ -22,17 +22,30 @@
                         <p class="text-center text-secondary h5 fw-bold text-wrap">YÖNETİM PANELİ</p>
                     </div>
 
-                    <form action="" class="px-2 px-sm-3 border-danger border-bottom border-1 pb-4">
-                        <div class="pb-3">
-                            <label class="fw-bold mb-2" for="username">KULLANICI ADI</label>
-                            <input name="username" class="p-3 w-100 border-danger form-control rounded-3" type="text"
-                                placeholder="Kullanıcı adınızı girin">
+                    @if (session('error'))
+                        <div class="alert alert-danger border-0 rounded-3 text-center fw-bold mb-3 small">
+                            {{ session('error') }}
                         </div>
+                    @endif
+                    <form action="{{ route('login.submit') }}" method="POST"
+                        class="px-2 px-sm-3 border-danger border-bottom border-1 pb-4">
+
+                        @csrf
+
+                        <div class="pb-3">
+                            <label class="fw-bold mb-2" for="kullanici_adi">KULLANICI ADI</label>
+                            <input name="kullanici_adi" id="kullanici_adi"
+                                class="p-3 w-100 border-danger form-control rounded-3" type="text"
+                                placeholder="Kullanıcı adınızı girin" value="{{ old('kullanici_adi') }}" required>
+                        </div>
+
                         <div class="pb-4">
                             <label class="fw-bold mb-2" for="password">ŞİFRE</label>
-                            <input name="password" class="p-3 w-100 border-danger form-control rounded-3" type="password"
-                                placeholder="Şifrenizi girin">
+                            <input name="password" id="kullanici_sifre"
+                                class="p-3 w-100 border-danger form-control rounded-3" type="password"
+                                placeholder="Şifrenizi girin" required>
                         </div>
+
                         <button class="btn btn-danger w-100 rounded-3 py-3 text-white fw-bold" type="submit">
                             GİRİŞ YAP
                         </button>

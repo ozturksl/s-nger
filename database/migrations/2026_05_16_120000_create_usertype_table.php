@@ -19,9 +19,4 @@ return new class extends Migration
             ['usertype_name' => 'Kullanıcı'],
         ]);
     }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('usertype');
-    }
 };

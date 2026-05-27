@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="{{ asset('site/css/main.css') }}">
 @endsection
 
+@if (session('success'))
+    <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+    </div>
+@endif
+
 @section('content')
     <section class="overflow-hidden">
         <div class="container">
@@ -194,9 +208,9 @@
                     </a>
                 </div>
                 <div class="text-center pt-4 pt-lg-5">
-                <a class="others h5 px-4 py-3 d-inline-block text-decoration-none" href="{{ route('request') }}">
-                   Hizmet Talep Edin</a>
-            </div>
+                    <a class="others h5 px-4 py-3 d-inline-block text-decoration-none" href="{{ route('request') }}">
+                        Hizmet Talep Edin</a>
+                </div>
             </div>
         </div>
     </section>
@@ -218,11 +232,14 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text small text-secondary">Mükemmel hizmet ve ürün kalitesi. Çok
-                                memnunum, kesinlikle tavsiye ederim!</p>
+                            <p class="testimonial-text small text-secondary">Hayri Bey bizi bugün misafir etti bayisine.
+                                Her şeyden önce arızayı doğru tespit etti ve doğru müdahalede bulundu. Servislerin bence en
+                                büyük sıkıntılarından birisi çok basit bir işleme bile bugün bırak bir hafta sonra gel
+                                demeleridir. Makinemizin arızası, anında onarıldı ve bize teslim edildi.
+                                Biz kendisinin hassasiyeti ve güler yüzü için çok teşekkür ederiz. Başarılarını dileriz.</p>
                             <div class="testimonial-footer mt-4">
-                                <h6 class="testimonial-name fw-bold mb-0">Ayşe Yılmaz</h6>
-                                <p class="testimonial-role small text-muted mb-0">İşletme Sahibi</p>
+                                <h6 class="testimonial-name fw-bold mb-0">Mehtap Güneş</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
@@ -237,11 +254,13 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text small text-secondary">Profesyonel ekip, hızlı çözümler. Sorunlarımız
-                                anında çözüldü. Çok tatminum!</p>
+                            <p class="testimonial-text small text-secondary">Benim 38 yıldır kullandığım makinemi birden
+                                hiç bir aksamı çalışmadı. Hayri beye götürdüm tüm içi paslanmış. Tertemiz çalışır vaziyette
+                                makul bir fiyata teslim etti. Hatta söylemediğim halde denge sallanma sorununu da gidermiş.
+                                Teşekkürler</p>
                             <div class="testimonial-footer mt-4">
-                                <h6 class="testimonial-name fw-bold mb-0">Mehmet Kaya</h6>
-                                <p class="testimonial-role small text-muted mb-0">Müşterilik Bölümü Müdürü</p>
+                                <h6 class="testimonial-name fw-bold mb-0">Şeniz Coşkun</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
@@ -256,11 +275,13 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text small text-secondary">Ürünler çok kaliteli ve uzun ömürlü. Satış
-                                sonrası hizmetler harika!</p>
+                            <p class="testimonial-text small text-secondary">İlk makinemi aldığımda tecrübesiz olduğum için
+                                sabırla anlattı nasıl kullanacağımı,telefonla dahi sorunumu çözmeye çalıştı olmadı. Artık
+                                acemi değilim overlok makinemide aldım. Hayri beye çok teşekkür ederim .hem düzgün satıcı
+                                hemde teknik serviste başarılı .</p>
                             <div class="testimonial-footer mt-4">
-                                <h6 class="testimonial-name fw-bold mb-0">Fatma Demir</h6>
-                                <p class="testimonial-role small text-muted mb-0">Atölye Sahibi</p>
+                                <h6 class="testimonial-name fw-bold mb-0">Ayfer Gündüzlü</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
@@ -275,11 +296,13 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text small text-secondary">Eğitim programları çok faydalı oldu.
-                                Personelim oldukça memnun kaldı.</p>
+                            <p class="testimonial-text small text-secondary">Tamire götürdüğümüz makinemizi gayet başarılı
+                                tamir etti yeni bir ürün de aldık her türlü sorumuzu cevapladı üstelik yeni aldığımız
+                                makineyle ilgili ne zaman sorumuz olsa aradık sorularımızı cevapladı başarılı ve güvenilir
+                                bir esnaf</p>
                             <div class="testimonial-footer mt-4">
-                                <h6 class="testimonial-name fw-bold mb-0">Ali Şen</h6>
-                                <p class="testimonial-role small text-muted mb-0">Üretim Müdürü</p>
+                                <h6 class="testimonial-name fw-bold mb-0">Gülcan Vurgun</h6>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
@@ -294,11 +317,12 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <p class="testimonial-text small text-secondary">Güvenilir bir firma. Sözleştikleri her şeyi
-                                yaparlar. İçim rahat oldu!</p>
+                            <p class="testimonial-text small text-secondary">Kendisinden birkaç gün önce dikiş makinesi
+                                aldım. Öğrenci olduğum için beni kırmadı, güzel bir indirim yaptı. Hem tamir konusunda hem
+                                de yeni makine alımında güvenle tercih edebilirsiniz.</p>
                             <div class="testimonial-footer mt-4">
                                 <h6 class="testimonial-name fw-bold mb-0">Zeynep Aydın</h6>
-                                <p class="testimonial-role small text-muted mb-0">Girişimci</p>
+                                <p class="testimonial-role small text-muted mb-0">Müşteri</p>
                             </div>
                         </div>
                     </div>
@@ -306,6 +330,50 @@
                 <div class="swiper-button-next testimonial-next d-none d-md-flex"></div>
                 <div class="swiper-button-prev testimonial-prev d-none d-md-flex"></div>
                 <div class="swiper-pagination testimonials-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-12">
+
+                    <div class="text-center mb-4">
+                        <h2 class="form-main-title fw-bold">BİZE DANIŞIN</h2>
+                        <p class="text-muted">Sorunlarınızı bize danışın, size telefon ile dönüş yapalım.</p>
+                    </div>
+
+                    <div class="service-form-card">
+                        <form action="#" method="POST">
+
+                            <div class="mb-3">
+                                <label for="adsoyadfr" class="form-label fw-semibold">Adınız Soyadınız</label>
+                                <input type="text" class="form-control" id="fullName" name="adsoyadfr"
+                                    placeholder="Adınızı ve soyadınızı giriniz.">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="kullanici_mesaj" class="form-label fw-semibold">Mesajınız</label>
+                                <textarea class="form-control service-input" id="message" name="kullanici_mesaj" rows="4"
+                                    placeholder="Sorununuz veya talebiniz hakkında kısa bir bilgi verebilirsiniz."></textarea>
+                            </div>
+
+                            <div class="mb-4 text-center form-info-text">
+                                <i>Paylaştığınız veriler sadece size ulaşmak için kullanılacak olup, talebiniz
+                                    sonuçlandığında
+                                    sistemimizden tamamen silinmektedir.</i>
+                            </div>
+
+                            <div class="text-center gap-2">
+                                <button type="submit" class="btn btn-lg others px-5 py-3">
+                                    Talebi Gönder
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>

@@ -8,9 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('prodcategories', function (Blueprint $table) {
-            $table->id('category_id');
-            $table->string('category_name',60);
+        Schema::create('customer_message_models', function (Blueprint $table) {
+            $table->id('customer_id');
+            $table->string('customer_name');
+            $table->text('customer_message');
             $table->timestamps();
         });
     }

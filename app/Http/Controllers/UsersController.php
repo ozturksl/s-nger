@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -46,7 +47,7 @@ class UsersController extends Controller
             UsersModel::create([
                 'user_name' => $request->input('adsoyad'),
                 'user_nickname' => $request->input('kullanici_adi'),
-                'user_password' => bcrypt($request->input('sifre')),
+                'user_password' => Hash::make($request->input('sifre')),
                 'user_photo' => $fotoAdi,
                 'user_type_id' => $request->input('user_type_id'),
                 'user_status_id' => $request->input('user_status_id'),
@@ -131,7 +132,7 @@ class UsersController extends Controller
             ];
 
             if ($request->filled('sifre')) {
-                $data['user_password'] = bcrypt($request->input('sifre'));
+                $data['user_password'] = Hash::make($request->input('sifre'));
             }
 
             if ($request->hasFile('kullanici_foto')) {

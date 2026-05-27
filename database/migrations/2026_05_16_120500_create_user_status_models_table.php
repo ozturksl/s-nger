@@ -19,9 +19,4 @@ return new class extends Migration
             ['user_status_name' => 'Etkin Değil'],
         ]);
     }  
-
-    public function down(): void
-    {
-        Schema::dropIfExists('user_status_models');
-    }
 };
